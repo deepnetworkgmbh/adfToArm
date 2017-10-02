@@ -1,36 +1,23 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties;
+using Newtonsoft.Json;
 
 namespace AdfToArm.Models.LinkedServices
 {
     [JsonObject]
-    public class AzureSqlDatabase
+    public class AzureSqlDatabase : LinkedService
     {
-        [JsonProperty("name", Required = Required.Always)]
-        public string Name { get; set; }
-
-        [JsonProperty("properties", Required = Required.Always)]
-        public AzureSqlDatabaseProperties Properties { get; set; }
-    }
-
-    public class AzureSqlDatabaseProperties
-    {
-        public AzureSqlDatabaseProperties()
+        public AzureSqlDatabase()
         {
-            Type = LinkedService.AzureSqlDatabase;
+            Properties = new LinkedServiceProperties
+            {
+                Type = LinkedServiceType.AzureSqlDatabase,
+                TypeProperties = new AzureSqlDatabaseTypeProperties()
+            };
         }
 
-        [JsonProperty("type", Required = Required.Always)]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public LinkedService Type { get; }
-
-        [JsonProperty("typeProperties", Required = Required.Always)]
-        public AzureSqlDatabaseTypeProperties TypeProperties { get; set; }
-    }
-
-    public class AzureSqlDatabaseTypeProperties
-    {
-        [JsonProperty("connectionString", Required = Required.Always)]
-        public string ConnectionString { get; set; }
+        public AzureSqlDatabase(string name) : this()
+        {
+            Name = name;
+        }
     }
 }

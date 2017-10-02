@@ -4,11 +4,11 @@ using Newtonsoft.Json;
 namespace AdfToArm.Models.DataSets
 {
     [JsonObject]
-    public class AzureBlob : DataSet<AzureBlobTypeProperties>
+    public class AzureBlob : DataSet
     {
         public AzureBlob()
         {
-            Properties = new DataSetProperties<AzureBlobTypeProperties>
+            Properties = new DataSetProperties
             {
                 Type = DataSetType.AzureBlob,
                 TypeProperties = new AzureBlobTypeProperties()

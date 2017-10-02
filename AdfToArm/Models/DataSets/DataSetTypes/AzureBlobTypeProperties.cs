@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace AdfToArm.Models.DataSets.DataSetTypes
 {
     [JsonObject]
-    public class AzureBlobTypeProperties : DataSetTypeProperties
+    public class AzureBlobTypeProperties : IDataSetTypeProperties
     {
         /// <summary>
         /// Path to the container and folder in the blob storage. Example: myblobcontainer\myblobfolder\

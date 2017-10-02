@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace AdfToArm.Models.DataSets.DataSetTypes
 {
     [JsonObject]
-    public class AzureDataLakeStoreTypeProperties : DataSetTypeProperties
+    public class AzureDataLakeStoreTypeProperties : IDataSetTypeProperties
     {
         /// <summary>
         /// Path to the container and folder in the Azure Data Lake store.

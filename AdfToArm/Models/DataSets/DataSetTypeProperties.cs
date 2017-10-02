@@ -1,6 +1,6 @@
 ﻿namespace AdfToArm.Models.DataSets
 {
-    public abstract class DataSetTypeProperties
+    public interface IDataSetTypeProperties
     {
     }
 }

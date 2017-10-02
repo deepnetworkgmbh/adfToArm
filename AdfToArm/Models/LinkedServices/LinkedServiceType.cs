@@ -1,8 +1,8 @@
 ﻿using System.Runtime.Serialization;
 
-namespace AdfToArm.Models
+namespace AdfToArm.Models.LinkedServices
 {
-    public enum LinkedService
+    public enum LinkedServiceType
     {
         [EnumMember(Value = "AzureSqlDatabase")]
         AzureSqlDatabase,

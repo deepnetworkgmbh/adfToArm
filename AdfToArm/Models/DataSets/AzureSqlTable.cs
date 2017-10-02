@@ -4,11 +4,11 @@ using Newtonsoft.Json;
 namespace AdfToArm.Models.DataSets
 {
     [JsonObject]
-    public class AzureSqlTable : DataSet<AzureSqlTableTypeProperties>
+    public class AzureSqlTable : DataSet
     {
         public AzureSqlTable()
         {
-            Properties = new DataSetProperties<AzureSqlTableTypeProperties>
+            Properties = new DataSetProperties
             {
                 Type = DataSetType.AzureSqlTable,
                 TypeProperties = new AzureSqlTableTypeProperties()

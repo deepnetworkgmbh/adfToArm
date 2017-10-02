@@ -3,17 +3,17 @@ using Newtonsoft.Json;
 
 namespace AdfToArm.Models.DataSets
 {
-    public abstract class DataSet <TTypeProperties> where TTypeProperties : DataSetTypeProperties 
+    public abstract class DataSet
     {
         // TODO: https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-naming-rules
         [JsonProperty("name", Required = Required.Always)]
         public string Name { get; set; }
 
         [JsonProperty("properties", Required = Required.Always)]
-        public DataSetProperties<TTypeProperties> Properties { get; set; }
+        public DataSetProperties Properties { get; set; }
     }
 
-    public class DataSetProperties<TTypeProperties> where TTypeProperties : DataSetTypeProperties
+    public class DataSetProperties
     {
         [JsonProperty("type", Required = Required.Always)]
         public DataSetType Type { get; set; }
@@ -31,7 +31,7 @@ namespace AdfToArm.Models.DataSets
         public StructureItem[] Structure { get; set; }
 
         [JsonProperty("typeProperties", Required = Required.Always)]
-        public TTypeProperties TypeProperties { get; set; }
+        public IDataSetTypeProperties TypeProperties { get; set; }
 
         /// <summary>
         /// Defines the processing window or the slicing model for the dataset production. 
