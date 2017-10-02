@@ -21,39 +21,39 @@ namespace AdfToArm.Models.Pipelines.ActivityProperties
         /// <summary>
         /// Application's Java/Spark main class
         /// </summary>
-        [JsonProperty("className", Required = Required.AllowNull)]
+        [JsonProperty("className", Required = Required.Default)]
         public string ClassName { get; set; }
 
         /// <summary>
         /// A list of command-line arguments to the Spark program.
         /// </summary>
-        [JsonProperty("arguments", Required = Required.AllowNull)]
+        [JsonProperty("arguments", Required = Required.Default)]
         public string[] Arguments { get; set; }
 
         /// <summary>
         /// The user account to impersonate to execute the Spark program
         /// </summary>
-        [JsonProperty("proxyUser", Required = Required.AllowNull)]
+        [JsonProperty("proxyUser", Required = Required.Default)]
         public string ProxyUser { get; set; }
 
         /// <summary>
         /// Spark configuration properties.
         /// </summary>
-        [JsonProperty("sparkConfig", Required = Required.AllowNull)]
+        [JsonProperty("sparkConfig", Required = Required.Default)]
         public string SparkConfig { get; set; }
 
         /// <summary>
         /// Specifies when the Spark log files are copied to the Azure storage used by HDInsight cluster (or) specified by sparkJobLinkedService. 
         /// Allowed values: None, Always, or Failure. Default value: None.
         /// </summary>
-        [JsonProperty("getDebugInfo", Required = Required.AllowNull)]
+        [JsonProperty("getDebugInfo", Required = Required.Default)]
         public GetDebugInfo GetDebugInfo { get; set; }
 
         /// <summary>
         /// The Azure Storage linked service that holds the Spark job file, dependencies, and logs. 
         /// If you do not specify a value for this property, the storage associated with HDInsight cluster is used.
         /// </summary>
-        [JsonProperty("sparkJobLinkedService", Required = Required.AllowNull)]
+        [JsonProperty("sparkJobLinkedService", Required = Required.Default)]
         public string SparkJobLinkedService { get; set; }
     }
 

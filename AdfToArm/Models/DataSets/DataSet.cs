@@ -1,10 +1,19 @@
 ﻿using AdfToArm.Models.DataSets.Common;
+using AdfToArm.Models.DataSets.DataSetTypes;
 using Newtonsoft.Json;
 
 namespace AdfToArm.Models.DataSets
 {
     public abstract class DataSet
     {
+        public DataSet()
+        {
+            Schema = @"http://datafactories.schema.management.azure.com/internalschemas/2015-09-01/Microsoft.DataFactory.Table.json";
+        }
+
+        [JsonProperty("$schema", Required = Required.Default)]
+        public string Schema { get; set; }
+
         // TODO: https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-naming-rules
         [JsonProperty("name", Required = Required.Always)]
         public string Name { get; set; }
@@ -21,15 +30,16 @@ namespace AdfToArm.Models.DataSets
         /// <summary>
         /// Boolean flag to specify whether a dataset is explicitly produced by a data factory pipeline or not.
         /// </summary>
-        [JsonProperty("external", Required = Required.AllowNull)]
+        [JsonProperty("external", Required = Required.Default)]
         public bool? External { get; set; }
 
         [JsonProperty("linkedServiceName", Required = Required.Always)]
         public string LinkedServiceName { get; set; }
 
-        [JsonProperty("structure", Required = Required.AllowNull)]
+        [JsonProperty("structure", Required = Required.Default)]
         public StructureItem[] Structure { get; set; }
 
+        //[JsonConverter(typeof(DatasetTypeConverter))]
         [JsonProperty("typeProperties", Required = Required.Always)]
         public IDataSetTypeProperties TypeProperties { get; set; }
 
@@ -43,7 +53,7 @@ namespace AdfToArm.Models.DataSets
         /// <summary>
         /// Defines the criteria or the condition that the dataset slices must fulfill. 
         /// </summary>
-        [JsonProperty("policy", Required = Required.AllowNull)]
+        [JsonProperty("policy", Required = Required.Default)]
         public Policy Policy { get; set; }
     }
 }

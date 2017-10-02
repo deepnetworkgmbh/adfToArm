@@ -13,16 +13,16 @@ namespace AdfToArm.Models.ARM
         [JsonProperty("type", Required = Required.Always)]
         public string Type { get; set; }
 
-        [JsonProperty("location", Required = Required.AllowNull)]
+        [JsonProperty("location", Required = Required.Default)]
         public string Location { get; set; }
 
-        [JsonProperty("name", Required = Required.AllowNull)]
+        [JsonProperty("name", Required = Required.Default)]
         public string Description { get; set; }
 
         [JsonProperty("resources", Required = Required.Always)]
         public ArmResource[] Resources { get; set; }
 
-        [JsonProperty("dependsOn", Required = Required.AllowNull)]
+        [JsonProperty("dependsOn", Required = Required.Default)]
         public string[] DependsOn { get; set; }
     }
 }

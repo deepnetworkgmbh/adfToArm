@@ -5,8 +5,8 @@ namespace AdfToArm.Models.DataSets.Common
     [JsonObject]
     public class FormatType
     {
-        [JsonProperty("format", Required = Required.Always)]
-        public FormatTypes Format { get; set; }
+        [JsonProperty("type", Required = Required.Always)]
+        public FormatTypes Type { get; set; }
 
         /// <summary>
         /// The character used to separate columns in a file. 
@@ -15,7 +15,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// 
         /// Only one character is allowed. The default value is comma (',').
         /// </summary>
-        [JsonProperty("columnDelimiter", Required = Required.AllowNull)]
+        [JsonProperty("columnDelimiter", Required = Required.Default)]
         public string ColumnDelimiter { get; set; }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// Only one character is allowed. 
         /// The default value is any of the following values on read: ["\r\n", "\r", "\n"] and "\r\n" on write.
         /// </summary>
-        [JsonProperty("rowDelimiter", Required = Required.AllowNull)]
+        [JsonProperty("rowDelimiter", Required = Required.Default)]
         public string RowDelimiter { get; set; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// Only one character is allowed. No default value. 
         /// <example>if you have comma (',') as the column delimiter but you want to have the comma character in the text (example: "Hello, world"), you can define ‘$’ as the escape character and use string "Hello$, world" in the source.</example>
         /// </summary>
-        [JsonProperty("escapeChar", Required = Required.AllowNull)]
+        [JsonProperty("escapeChar", Required = Required.Default)]
         public string EscapeChar { get; set; }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// Only one character is allowed. No default value. 
         /// <example>if you have comma (',') as the column delimiter but you want to have comma character in the text (example: ), you can define " (double quote) as the quote character and use the string "Hello, world" in the source.</example>
         /// </summary>
-        [JsonProperty("quoteChar", Required = Required.AllowNull)]
+        [JsonProperty("quoteChar", Required = Required.Default)]
         public string QuoteChar { get; set; }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// 
         /// One or more characters. The default values are "\N" and "NULL" on read and "\N" on write.
         /// </summary>
-        [JsonProperty("nullValue", Required = Required.AllowNull)]
+        [JsonProperty("nullValue", Required = Required.Default)]
         public string NullValue { get; set; }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// <example>windows-1250 or shift_jis</example>
         /// The default value is UTF-8.
         /// </summary>
-        [JsonProperty("encodingName", Required = Required.AllowNull)]
+        [JsonProperty("encodingName", Required = Required.Default)]
         public string EncodingName { get; set; }
 
         /// <summary>
@@ -75,14 +75,14 @@ namespace AdfToArm.Models.DataSets.Common
         /// 
         /// Default value is false
         /// </summary>
-        [JsonProperty("firstRowAsHeader", Required = Required.AllowNull)]
+        [JsonProperty("firstRowAsHeader", Required = Required.Default)]
         public bool? FirstRowAsHeader { get; set; }
 
         /// <summary>
         /// Indicates the number of rows to skip when reading data from input files. 
         /// If both skipLineCount and firstRowAsHeader are specified, the lines are skipped first and then the header information is read from the input file. 
         /// </summary>
-        [JsonProperty("skipLineCount", Required = Required.AllowNull)]
+        [JsonProperty("skipLineCount", Required = Required.Default)]
         public int? SkipLineCount { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// 
         /// Default value is True
         /// </summary>
-        [JsonProperty("treatEmptyAsNull", Required = Required.AllowNull)]
+        [JsonProperty("treatEmptyAsNull", Required = Required.Default)]
         public bool? TreatEmptyAsNull { get; set; }
     }
 }

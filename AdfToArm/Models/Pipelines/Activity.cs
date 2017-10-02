@@ -43,25 +43,25 @@ namespace AdfToArm.Models.Pipelines
         /// It is required for HDInsight activities, Azure Machine Learning activities, and Stored Procedure Activity. 
         /// No for all others
         /// </summary>
-        [JsonProperty("linkedServiceName", Required = Required.AllowNull)]
+        [JsonProperty("linkedServiceName", Required = Required.Default)]
         public string LinkedServiceName { get; set; }
 
         /// <summary>
         /// Properties in the typeProperties section depend on type of the activity.
         /// </summary>
-        [JsonProperty("typeProperties", Required = Required.AllowNull)]
+        [JsonProperty("typeProperties", Required = Required.Default)]
         public IActivityTypeProperties TypeProperties { get; set; }
 
         /// <summary>
         /// Policies that affect the run-time behavior of the activity. If it is not specified, default policies are used.
         /// </summary>
-        [JsonProperty("policy", Required = Required.AllowNull)]
+        [JsonProperty("policy", Required = Required.Default)]
         public Policy Policy { get; set; }
 
         /// <summary>
         /// “scheduler” property is used to define desired scheduling for the activity
         /// </summary>
-        [JsonProperty("scheduler", Required = Required.AllowNull)]
+        [JsonProperty("scheduler", Required = Required.Default)]
         public Scheduler Scheduler { get; set; }
     }
 }

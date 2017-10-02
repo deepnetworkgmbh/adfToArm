@@ -7,6 +7,14 @@ namespace AdfToArm.Models.Pipelines
     [JsonObject]
     public class Pipeline
     {
+        public Pipeline()
+        {
+            Schema = @"http://datafactories.schema.management.azure.com/internalschemas/2015-09-01/Microsoft.DataFactory.Pipeline.json";
+        }
+
+        [JsonProperty("$schema", Required = Required.Default)]
+        public string Schema { get; set; }
+
         // TODO: naming rules: https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-json-scripting-reference#pipeline
         [JsonProperty("name", Required = Required.Always)]
         public string Name { get; set; }
@@ -21,7 +29,7 @@ namespace AdfToArm.Models.Pipelines
         /// <summary>
         /// Text describing what the activity or pipeline is used for
         /// </summary>
-        [JsonProperty("description", Required = Required.AllowNull)]
+        [JsonProperty("description", Required = Required.Default)]
         public string Description { get; set; }
 
         /// <summary>
@@ -43,7 +51,7 @@ namespace AdfToArm.Models.Pipelines
         /// You must specify both values to set an active period for the pipeline to run. 
         /// If you do not specify start and end times when creating a pipeline, you can set them using the Set-AzureRmDataFactoryPipelineActivePeriod cmdlet later.
         /// </summary>
-        [JsonProperty("start", Required = Required.AllowNull)]
+        [JsonProperty("start", Required = Required.Default)]
         public DateTime? Start { get; set; }
 
         /// <summary>
@@ -54,13 +62,13 @@ namespace AdfToArm.Models.Pipelines
         /// If you specify a value for the start property, you must specify value for the end property. 
         /// See notes for the start property.
         /// </summary>
-        [JsonProperty("end", Required = Required.AllowNull)]
+        [JsonProperty("end", Required = Required.Default)]
         public DateTime? End { get; set; }
 
         /// <summary>
         /// If set to true the pipeline does not run. Default value = false. You can use this property to enable or disable.
         /// </summary>
-        [JsonProperty("isPaused", Required = Required.AllowNull)]
+        [JsonProperty("isPaused", Required = Required.Default)]
         public bool? IsPaused { get; set; }
 
         /// <summary>
@@ -70,14 +78,14 @@ namespace AdfToArm.Models.Pipelines
         /// ‘Onetime’ indicates that the pipeline runs only once. Onetime pipelines once created cannot be modified/updated currently. 
         /// See Onetime pipeline for details about onetime setting.
         /// </summary>
-        [JsonProperty("pipelineMode", Required = Required.AllowNull)]
+        [JsonProperty("pipelineMode", Required = Required.Default)]
         public PipelineMode PipelineMode { get; set; }
 
         /// <summary>
         /// Duration of time after creation for which the pipeline is valid and should remain provisioned. 
         /// If it does not have any active, failed, or pending runs, the pipeline is deleted automatically once it reaches the expiration time.
         /// </summary>
-        [JsonProperty("expirationTime", Required = Required.AllowNull)]
+        [JsonProperty("expirationTime", Required = Required.Default)]
         public TimeSpan? ExpirationTime { get; set; }
     }
 }

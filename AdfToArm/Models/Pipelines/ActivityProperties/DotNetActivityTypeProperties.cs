@@ -1,4 +1,5 @@
-﻿using AdfToArm.Models.Pipelines.Common;
+﻿using AdfToArm.Common;
+using AdfToArm.Models.Pipelines.Common;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -37,7 +38,7 @@ namespace AdfToArm.Models.Pipelines.ActivityProperties
         /// Extended properties that you can define and pass on to the .NET code
         /// </summary>
         [JsonConverter(typeof(PairConverter))]
-        [JsonProperty("extendedProperties", Required = Required.AllowNull)]
+        [JsonProperty("extendedProperties", Required = Required.Default)]
         public KeyValuePair<string, string>[] ExtendedProperties { get; set; }
     }
 }

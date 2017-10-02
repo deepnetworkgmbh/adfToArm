@@ -6,14 +6,14 @@ namespace AdfToArm.Models.DataSets.Common
     [JsonObject]
     public class Policy
     {
-        [JsonProperty("validation", Required = Required.AllowNull)]
+        [JsonProperty("validation", Required = Required.Default)]
         public PolicyValidation Validation { get; set; }
 
         /// <summary>
         /// Unless a dataset is being produced by Azure Data Factory, it should be marked as external. 
         /// This setting generally applies to the inputs of first activity in a pipeline unless activity or pipeline chaining is being used.
         /// </summary>
-        [JsonProperty("externalData", Required = Required.AllowNull)]
+        [JsonProperty("externalData", Required = Required.Default)]
         public ExternalPolicy External { get; set; }
     }
 
@@ -25,7 +25,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// 
         /// Applies only to Azure Blob
         /// </summary>
-        [JsonProperty("minimumSizeMB", Required = Required.AllowNull)]
+        [JsonProperty("minimumSizeMB", Required = Required.Default)]
         public float? MinimumSizeMB { get; set; }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// 
         /// Applies only to Azure Blob and Azure SQL Database
         /// </summary>
-        [JsonProperty("minimumRows", Required = Required.AllowNull)]
+        [JsonProperty("minimumRows", Required = Required.Default)]
         public float? MinimumRows { get; set; }
     }
 
@@ -53,7 +53,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// If you use 24:00:00, it is treated as 24 days (24.00:00:00). 
         /// For 1 day and 4 hours, specify 1:04:00:00.
         /// </summary>
-        [JsonProperty("dataDelay", Required = Required.AllowNull)]
+        [JsonProperty("dataDelay", Required = Required.Default)]
         public int? DataDelay { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// 
         /// Default value is 00:01:00 (1 minute)
         /// </summary>
-        [JsonProperty("retryInterval", Required = Required.AllowNull)]
+        [JsonProperty("retryInterval", Required = Required.Default)]
         public TimeSpan? RetryInterval { get; set; }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// 
         /// Default value is 00:10:00 (10 minutes)
         /// </summary>
-        [JsonProperty("retryTimeout", Required = Required.AllowNull)]
+        [JsonProperty("retryTimeout", Required = Required.Default)]
         public TimeSpan? RetryTimeout { get; set; }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// 
         /// Default value is 3
         /// </summary>
-        [JsonProperty("maximumRetry", Required = Required.AllowNull)]
+        [JsonProperty("maximumRetry", Required = Required.Default)]
         public int? MaximumRetry { get; set; }
     }
 }

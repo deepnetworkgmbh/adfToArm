@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using AdfToArm.Models.Pipelines.Common;
+using AdfToArm.Common;
 
 namespace AdfToArm.Models.Pipelines.ActivityProperties
 {
@@ -18,7 +18,7 @@ namespace AdfToArm.Models.Pipelines.ActivityProperties
         /// If you need to pass null for a parameter, use the syntax: "param1": null (all lower case)
         /// </summary>
         [JsonConverter(typeof(PairConverter))]
-        [JsonProperty("storedProcedureParameters", Required = Required.AllowNull)]
+        [JsonProperty("storedProcedureParameters", Required = Required.Default)]
         public KeyValuePair<string, string>[] StoredProcedureParameters { get; set; }
     }
 }

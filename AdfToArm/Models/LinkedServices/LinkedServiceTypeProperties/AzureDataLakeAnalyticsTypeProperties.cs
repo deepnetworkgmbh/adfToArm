@@ -14,7 +14,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// <summary>
         /// Azure Data Lake Analytics URI.
         /// </summary>
-        [JsonProperty("dataLakeAnalyticsUri", Required = Required.AllowNull)]
+        [JsonProperty("dataLakeAnalyticsUri", Required = Required.Default)]
         public string DataLakeAnalyticsUri { get; set; }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// If not specified, subscription of the data factory is used
         /// </summary>
-        [JsonProperty("sessionId", Required = Required.AllowNull)]
+        [JsonProperty("sessionId", Required = Required.Default)]
         public string SessionId { get; set; }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// If not specified, resource group of the data factory is used
         /// </summary>
-        [JsonProperty("subscriptionId", Required = Required.AllowNull)]
+        [JsonProperty("subscriptionId", Required = Required.Default)]
         public string SubscriptionId { get; set; }
 
         /// <summary>

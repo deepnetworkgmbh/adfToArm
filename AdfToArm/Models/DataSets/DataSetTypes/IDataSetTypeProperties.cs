@@ -1,4 +1,4 @@
-﻿namespace AdfToArm.Models.DataSets
+﻿namespace AdfToArm.Models.DataSets.DataSetTypes
 {
     public interface IDataSetTypeProperties
     {

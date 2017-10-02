@@ -6,6 +6,14 @@ namespace AdfToArm.Models.LinkedServices
 {
     public abstract class LinkedService
     {
+        public LinkedService()
+        {
+            Schema = @"http://datafactories.schema.management.azure.com/internalschemas/2015-09-01/Microsoft.DataFactory.LinkedService.json";
+        }
+
+        [JsonProperty("$schema", Required = Required.Default)]
+        public string Schema { get; set; }
+
         [JsonProperty("name", Required = Required.Always)]
         public string Name { get; set; }
 
