@@ -2,10 +2,10 @@
 using Newtonsoft.Json;
 using System;
 
-namespace AdfToArm.Models.DataSets.Common
+namespace AdfToArm.Models.Pipelines.Common
 {
     [JsonObject]
-    public class Availability
+    public class Scheduler
     {
         /// <summary>
         /// Specifies the time unit for dataset slice production.
