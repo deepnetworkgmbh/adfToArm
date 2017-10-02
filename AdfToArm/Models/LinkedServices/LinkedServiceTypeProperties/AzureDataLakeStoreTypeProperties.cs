@@ -17,7 +17,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for sink
         /// </summary>
-        [JsonProperty("subscriptionId", Required = Required.Default)]
+        [JsonProperty("subscriptionId", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string SubscriptionId { get; set; }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for sink
         /// </summary>
-        [JsonProperty("resourceGroupName", Required = Required.Default)]
+        [JsonProperty("resourceGroupName", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for service principal authentication
         /// </summary>
-        [JsonProperty("servicePrincipalId", Required = Required.Default)]
+        [JsonProperty("servicePrincipalId", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string ServicePrincipalId { get; set; }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for service principal authentication
         /// </summary>
-        [JsonProperty("servicePrincipalKey", Required = Required.Default)]
+        [JsonProperty("servicePrincipalKey", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string ServicePrincipalKey { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for service principal authentication
         /// </summary>
-        [JsonProperty("tenant", Required = Required.Default)]
+        [JsonProperty("tenant", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string Tenant { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for user credential authentication
         /// </summary>
-        [JsonProperty("authorization", Required = Required.Default)]
+        [JsonProperty("authorization", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string Authorization { get; set; }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for user credential authentication
         /// </summary>
-        [JsonProperty("sessionId", Required = Required.Default)]
+        [JsonProperty("sessionId", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string SessionId { get; set; }
     }
 }

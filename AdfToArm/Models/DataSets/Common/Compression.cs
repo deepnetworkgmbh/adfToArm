@@ -14,6 +14,7 @@ namespace AdfToArm.Models.DataSets.Common
         /// When writing to files in these formats, Data Factory chooses the default compression codec for that format. 
         /// For example, ZLIB for OrcFormat and SNAPPY for ParquetFormat.
         /// </summary>
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         [JsonProperty("type", Required = Required.Always)]
         public CompressionType Type { get; set; }
 

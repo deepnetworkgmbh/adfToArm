@@ -6,16 +6,16 @@ namespace AdfToArm.Models.Pipelines.ActivityProperties
     [JsonObject]
     public class CopyTypeProperties : IActivityTypeProperties
     {
-        [JsonProperty("source", Required = Required.Always)]
-        public string Source { get; set; }
+        [JsonProperty("source", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public object Source { get; set; }
 
-        [JsonProperty("sink", Required = Required.Always)]
-        public string Sink { get; set; }
+        [JsonProperty("sink", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public object Sink { get; set; }
 
-        [JsonProperty("translator", Required = Required.Always)]
-        public string Translator { get; set; }
+        [JsonProperty("translator", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public object Translator { get; set; }
 
-        [JsonProperty("type", Required = Required.Always)]
-        public string Type { get; set; }
+        [JsonProperty("type", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public object Type { get; set; }
     }
 }

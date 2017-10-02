@@ -11,7 +11,7 @@ namespace AdfToArm.Models.DataSets
             Schema = @"http://datafactories.schema.management.azure.com/internalschemas/2015-09-01/Microsoft.DataFactory.Table.json";
         }
 
-        [JsonProperty("$schema", Required = Required.Default)]
+        [JsonProperty("$schema", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string Schema { get; set; }
 
         // TODO: https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-naming-rules
@@ -24,22 +24,32 @@ namespace AdfToArm.Models.DataSets
 
     public class DataSetProperties
     {
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         [JsonProperty("type", Required = Required.Always)]
         public DataSetType Type { get; set; }
 
         /// <summary>
+        /// Legacy Boolean flag.
+        /// 
+        /// Microsoft employee comment:
+        /// "At this point, it is not used for anything and doesn't impact anything in ADF.  
+        /// We will either retire it in a future rev, or consider lighting it up as a future feature to publish data to Azure Data Catalog or other services."
+        /// </summary>
+        [JsonProperty("published", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Published { get; set; }
+
+        /// <summary>
         /// Boolean flag to specify whether a dataset is explicitly produced by a data factory pipeline or not.
         /// </summary>
-        [JsonProperty("external", Required = Required.Default)]
+        [JsonProperty("external", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public bool? External { get; set; }
 
         [JsonProperty("linkedServiceName", Required = Required.Always)]
         public string LinkedServiceName { get; set; }
 
-        [JsonProperty("structure", Required = Required.Default)]
+        [JsonProperty("structure", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public StructureItem[] Structure { get; set; }
 
-        //[JsonConverter(typeof(DatasetTypeConverter))]
         [JsonProperty("typeProperties", Required = Required.Always)]
         public IDataSetTypeProperties TypeProperties { get; set; }
 
@@ -53,7 +63,7 @@ namespace AdfToArm.Models.DataSets
         /// <summary>
         /// Defines the criteria or the condition that the dataset slices must fulfill. 
         /// </summary>
-        [JsonProperty("policy", Required = Required.Default)]
+        [JsonProperty("policy", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public Policy Policy { get; set; }
     }
 }

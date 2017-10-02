@@ -38,7 +38,7 @@ namespace AdfToArm.Models.Pipelines.ActivityProperties
         /// Extended properties that you can define and pass on to the .NET code
         /// </summary>
         [JsonConverter(typeof(PairConverter))]
-        [JsonProperty("extendedProperties", Required = Required.Default)]
+        [JsonProperty("extendedProperties", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public KeyValuePair<string, string>[] ExtendedProperties { get; set; }
     }
 }

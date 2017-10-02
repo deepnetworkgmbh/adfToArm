@@ -12,6 +12,7 @@ namespace AdfToArm.Models.Pipelines.Common
         ///
         /// Supported frequency: Minute, Hour, Day, Week, Month
         /// </summary>
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         [JsonProperty("frequency", Required = Required.Always)]
         public Frequency Frequency { get; set; }
 
@@ -35,7 +36,8 @@ namespace AdfToArm.Models.Pipelines.Common
         /// If Frequency is set to Hour and style is set to EndOfInterval, the slice is produced at the end of the hour. 
         /// For example, for a slice for 1 PM – 2 PM period, the slice is produced at 2 PM.
         /// </summary>
-        [JsonProperty("style", Required = Required.Default)]
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        [JsonProperty("style", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public AvailabilityStyle? Style { get; set; }
 
         /// <summary>
@@ -45,7 +47,7 @@ namespace AdfToArm.Models.Pipelines.Common
         /// 
         /// For example, if the interval is hourly (frequency: hour and interval: 1) and the AnchorDateTime contains minutes and seconds then the minutes and seconds parts of the AnchorDateTime are ignored.
         /// </summary>
-        [JsonProperty("anchorDateTime", Required = Required.Default)]
+        [JsonProperty("anchorDateTime", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public DateTime? AnchorDateTime { get; set; }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace AdfToArm.Models.Pipelines.Common
         /// 
         /// Note: If both anchorDateTime and offset are specified, the result is the combined shift.
         /// </summary>
-        [JsonProperty("offset", Required = Required.Default)]
+        [JsonProperty("offset", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public TimeSpan? Offset { get; set; }
     }
 }

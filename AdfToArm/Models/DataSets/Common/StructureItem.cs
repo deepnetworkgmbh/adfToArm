@@ -14,19 +14,19 @@ namespace AdfToArm.Models.DataSets.Common
         /// <summary>
         /// Data type of the column
         /// </summary>
-        [JsonProperty("type", Required = Required.Default)]
+        [JsonProperty("type", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
 
         /// <summary>
         /// .NET based culture to be used when type is specified and is .NET type Datetime or Datetimeoffset. Default is en-us.
         /// </summary>
-        [JsonProperty("culture", Required = Required.Default)]
+        [JsonProperty("culture", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string Culture { get; set; }
 
         /// <summary>
         /// Format string to be used when type is specified and is .NET type Datetime or Datetimeoffset.
         /// </summary>
-        [JsonProperty("format", Required = Required.Default)]
+        [JsonProperty("format", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string Format { get; set; }
     }
 }

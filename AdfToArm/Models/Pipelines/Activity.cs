@@ -15,19 +15,20 @@ namespace AdfToArm.Models.Pipelines
         /// <summary>
         /// Text describing what the activity is used for.
         /// </summary>
-        [JsonProperty("description", Required = Required.Always)]
+        [JsonProperty("description", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
 
         /// <summary>
         /// Specifies the type of the activity
         /// </summary>
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         [JsonProperty("type", Required = Required.Always)]
         public ActivityType Type { get; set; }
 
         /// <summary>
         /// Input tables used by the activity
         /// </summary>
-        [JsonProperty("inputs", Required = Required.Always)]
+        [JsonProperty("inputs", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public IOItem[] Inputs { get; set; }
 
         /// <summary>
@@ -43,25 +44,25 @@ namespace AdfToArm.Models.Pipelines
         /// It is required for HDInsight activities, Azure Machine Learning activities, and Stored Procedure Activity. 
         /// No for all others
         /// </summary>
-        [JsonProperty("linkedServiceName", Required = Required.Default)]
+        [JsonProperty("linkedServiceName", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string LinkedServiceName { get; set; }
 
         /// <summary>
         /// Properties in the typeProperties section depend on type of the activity.
         /// </summary>
-        [JsonProperty("typeProperties", Required = Required.Default)]
+        [JsonProperty("typeProperties", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public IActivityTypeProperties TypeProperties { get; set; }
 
         /// <summary>
         /// Policies that affect the run-time behavior of the activity. If it is not specified, default policies are used.
         /// </summary>
-        [JsonProperty("policy", Required = Required.Default)]
+        [JsonProperty("policy", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public Policy Policy { get; set; }
 
         /// <summary>
         /// “scheduler” property is used to define desired scheduling for the activity
         /// </summary>
-        [JsonProperty("scheduler", Required = Required.Default)]
+        [JsonProperty("scheduler", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public Scheduler Scheduler { get; set; }
     }
 }

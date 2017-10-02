@@ -18,7 +18,7 @@ namespace AdfToArm.Models.Pipelines.ActivityProperties
         /// If you need to pass null for a parameter, use the syntax: "param1": null (all lower case)
         /// </summary>
         [JsonConverter(typeof(PairConverter))]
-        [JsonProperty("storedProcedureParameters", Required = Required.Default)]
+        [JsonProperty("storedProcedureParameters", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public KeyValuePair<string, string>[] StoredProcedureParameters { get; set; }
     }
 }

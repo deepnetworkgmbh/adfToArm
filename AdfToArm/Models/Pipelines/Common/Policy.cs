@@ -14,7 +14,7 @@ namespace AdfToArm.Models.Pipelines.Common
         /// 
         /// Default value is 1, Maximum - 10.
         /// </summary>
-        [JsonProperty("concurrency", Required = Required.Default)]
+        [JsonProperty("concurrency", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public int? Concurrency { get; set; }
 
         /// <summary>
@@ -24,7 +24,8 @@ namespace AdfToArm.Models.Pipelines.Common
         /// If you set the executionPriorityOrder to be NewestFirst, the slice at 5 PM is processed first. 
         /// Similarly if you set the executionPriorityORder to be OldestFIrst, then the slice at 4 PM is processed.
         /// </summary>
-        [JsonProperty("executionPriorityOrder", Required = Required.Default)]
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        [JsonProperty("executionPriorityOrder", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public ExecutionPriorityOrders? ExecutionPriorityOrder { get; set; }
 
         /// <summary>
@@ -34,7 +35,7 @@ namespace AdfToArm.Models.Pipelines.Common
         /// 
         /// Default value is 0, Maximum - 10.
         /// </summary>
-        [JsonProperty("retry", Required = Required.Default)]
+        [JsonProperty("retry", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public int? Retry { get; set; }
 
         /// <summary>
@@ -45,7 +46,7 @@ namespace AdfToArm.Models.Pipelines.Common
         /// If the data processing time on a slice exceeds the timeout value, it is canceled, and the system attempts to retry the processing. 
         /// The number of retries depends on the retry property. When timeout occurs, the status is set to TimedOut.
         /// </summary>
-        [JsonProperty("timeout", Required = Required.Default)]
+        [JsonProperty("timeout", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public TimeSpan? Timeout { get; set; }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace AdfToArm.Models.Pipelines.Common
         /// 
         /// Example: 00:10:00 (implies delay of 10 mins)
         /// </summary>
-        [JsonProperty("delay", Required = Required.Default)]
+        [JsonProperty("delay", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public TimeSpan? Delay { get; set; }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace AdfToArm.Models.Pipelines.Common
         /// 
         /// Default value is 1, Maximum - 10.
         /// </summary>
-        [JsonProperty("longRetry", Required = Required.Default)]
+        [JsonProperty("longRetry", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public int? LongRetry { get; set; }
 
         /// <summary>
@@ -94,7 +95,7 @@ namespace AdfToArm.Models.Pipelines.Common
         /// 
         /// Default value is 00:00:00
         /// </summary>
-        [JsonProperty("longRetryInterval", Required = Required.Default)]
+        [JsonProperty("longRetryInterval", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public TimeSpan? LongRetryInterval { get; set; }
     }
 }
