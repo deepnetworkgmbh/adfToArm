@@ -1,14 +1,140 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{70A66F8B-FA1B-4699-BA8E-E4CBB3A6ED66}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <RootNamespace>AdfToArm</RootNamespace>
+    <AssemblyName>AdfToArm</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
-
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.1.1-beta" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
+    <Reference Include="CommandLine, Version=2.0.275.0, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.2.1.1-beta\lib\net45\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Console">
+      <HintPath>..\packages\System.Console.4.0.0-rc2-24027\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Reflection.TypeExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.TypeExtensions.4.1.0-rc2-24027\lib\net46\System.Reflection.TypeExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Compile Include="AdfCompiler.cs" />
+    <Compile Include="AdfSerializer.cs" />
+    <Compile Include="Logs\ConsoleLogger.cs" />
+    <Compile Include="Logs\ILogger.cs" />
+    <Compile Include="Logs\Logger.cs" />
+    <Compile Include="Models\AdfItemType.cs" />
+    <Compile Include="Models\ARM\ArmParameter.cs" />
+    <Compile Include="Models\ARM\ArmResource.cs" />
+    <Compile Include="Models\ARM\ArmTemplate.cs" />
+    <Compile Include="Models\ARM\Constants.cs" />
+    <Compile Include="Models\ARM\Templates\DataFactoryArm.cs" />
+    <Compile Include="Models\ARM\Templates\DataSetArm.cs" />
+    <Compile Include="Models\ARM\Templates\LinkedServiceArm.cs" />
+    <Compile Include="Models\ARM\Templates\PipelineArm.cs" />
+    <Compile Include="Models\Common\AvailabilityStyle.cs" />
+    <Compile Include="Models\Common\Frequency.cs" />
+    <Compile Include="Models\Common\PairConverter.cs" />
+    <Compile Include="Models\DataSets\AzureBlob.cs" />
+    <Compile Include="Models\DataSets\AzureDataLakeStore.cs" />
+    <Compile Include="Models\DataSets\AzureSqlTable.cs" />
+    <Compile Include="Models\DataSets\Common\Availability.cs" />
+    <Compile Include="Models\DataSets\Common\Compression.cs" />
+    <Compile Include="Models\DataSets\Common\CompressionType.cs" />
+    <Compile Include="Models\DataSets\Common\PartitionedBy.cs" />
+    <Compile Include="Models\DataSets\Common\Policy.cs" />
+    <Compile Include="Models\DataSets\Common\StructureItem.cs" />
+    <Compile Include="Models\DataSets\Common\TypeFormat.cs" />
+    <Compile Include="Models\DataSets\Common\TypeFormats.cs" />
+    <Compile Include="Models\DataSets\DataSet.cs" />
+    <Compile Include="Models\DataSets\DataSetType.cs" />
+    <Compile Include="Models\DataSets\DataSetTypes\AzureBlobTypeProperties.cs" />
+    <Compile Include="Models\DataSets\DataSetTypes\AzureDataLakeStoreTypeProperties.cs" />
+    <Compile Include="Models\DataSets\DataSetTypes\AzureSqlTableTypeProperties.cs" />
+    <Compile Include="Models\DataSets\DataSetTypes\IDataSetTypeProperties.cs" />
+    <Compile Include="Models\LinkedServices\AzureBatch.cs" />
+    <Compile Include="Models\LinkedServices\AzureDataLakeAnalytics.cs" />
+    <Compile Include="Models\LinkedServices\AzureDataLakeStore.cs" />
+    <Compile Include="Models\LinkedServices\AzureSqlDatabase.cs" />
+    <Compile Include="Models\LinkedServices\AzureStorage.cs" />
+    <Compile Include="Models\LinkedServices\HDInsight.cs" />
+    <Compile Include="Models\LinkedServices\LinkedService.cs" />
+    <Compile Include="Models\LinkedServices\LinkedServiceType.cs" />
+    <Compile Include="Models\LinkedServices\LinkedServiceTypeProperties\AzureBatchTypeProperties.cs" />
+    <Compile Include="Models\LinkedServices\LinkedServiceTypeProperties\AzureDataLakeAnalyticsTypeProperties.cs" />
+    <Compile Include="Models\LinkedServices\LinkedServiceTypeProperties\AzureDataLakeStoreTypeProperties.cs" />
+    <Compile Include="Models\LinkedServices\LinkedServiceTypeProperties\AzureSqlDatabaseTypeProperties.cs" />
+    <Compile Include="Models\LinkedServices\LinkedServiceTypeProperties\AzureStorageTypeProperties.cs" />
+    <Compile Include="Models\LinkedServices\LinkedServiceTypeProperties\HDInsightTypeProperties.cs" />
+    <Compile Include="Models\LinkedServices\LinkedServiceTypeProperties\ILinkedServiceProperties.cs" />
+    <Compile Include="Models\Pipelines\Activity.cs" />
+    <Compile Include="Models\Pipelines\ActivityCopy.cs" />
+    <Compile Include="Models\Pipelines\ActivityDataLakeAnalyticsUsql.cs" />
+    <Compile Include="Models\Pipelines\ActivityDotNetActivity.cs" />
+    <Compile Include="Models\Pipelines\ActivityHDInsightSpark.cs" />
+    <Compile Include="Models\Pipelines\ActivityProperties\CopyTypeProperties.cs" />
+    <Compile Include="Models\Pipelines\ActivityProperties\DataLakeAnalyticsUsqlTypeProperties.cs" />
+    <Compile Include="Models\Pipelines\ActivityProperties\DotNetActivityTypeProperties.cs" />
+    <Compile Include="Models\Pipelines\ActivityProperties\HDInsightSparkTypeProperties.cs" />
+    <Compile Include="Models\Pipelines\ActivityProperties\IActivityTypeProperties.cs" />
+    <Compile Include="Models\Pipelines\ActivityProperties\SqlServerStoredProcedureTypeProperties.cs" />
+    <Compile Include="Models\Pipelines\ActivitySqlServerStoredProcedure.cs" />
+    <Compile Include="Models\Pipelines\ActivityType.cs" />
+    <Compile Include="Models\Pipelines\ActivityTypeConverter.cs" />
+    <Compile Include="Models\Pipelines\Common\ExecutionPriorityOrders.cs" />
+    <Compile Include="Models\Pipelines\Common\IOItem.cs" />
+    <Compile Include="Models\Pipelines\Common\PipelineMode.cs" />
+    <Compile Include="Models\Pipelines\Common\Policy.cs" />
+    <Compile Include="Models\Pipelines\Common\Scheduler.cs" />
+    <Compile Include="Models\Pipelines\Pipeline.cs" />
+    <Compile Include="Options.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

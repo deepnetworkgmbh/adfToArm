@@ -4,6 +4,8 @@ namespace AdfToArm.Logs
 {
     public class ConsoleLogger : ILogger
     {
+        private bool _verbose;
+
         public void Error(string message)
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -15,7 +17,15 @@ namespace AdfToArm.Logs
 
         public void Info(string message)
         {
+            if (!_verbose)
+                return;
+
             Console.WriteLine($"[{DateTime.UtcNow}]: {message}");
+        }
+
+        public void SetLoggingLevel(bool verbose)
+        {
+            _verbose = verbose;
         }
 
         public void Warn(string message)
