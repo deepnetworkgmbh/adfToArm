@@ -17,8 +17,12 @@ namespace AdfToArm.Models.ARM.Tempaltes
             var dependencies = new List<string>() { factoryName };
             foreach(var activity in pipeline.Properties.Activities)
             {
-                foreach(var input in activity.Inputs)
-                    dependencies.Add(input.Name);
+                if (activity.Inputs != null)
+                {
+                    foreach (var input in activity.Inputs)
+                        dependencies.Add(input.Name);
+                }
+
                 foreach (var output in activity.Outputs)
                     dependencies.Add(output.Name);
             }

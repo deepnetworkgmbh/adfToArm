@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using AdfToArm.Common;
+using AdfToArm.Models.Common;
 
 namespace AdfToArm.Models.Pipelines.ActivityProperties
 {

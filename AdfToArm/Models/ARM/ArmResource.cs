@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace AdfToArm.Models.ARM
 {
@@ -16,11 +17,11 @@ namespace AdfToArm.Models.ARM
         [JsonProperty("location", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string Location { get; set; }
 
-        [JsonProperty("name", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("description", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
 
-        [JsonProperty("resources", Required = Required.Always)]
-        public ArmResource[] Resources { get; set; }
+        [JsonProperty("resources", Required = Required.AllowNull)]
+        public List<ArmResource> Resources { get; set; }
 
         [JsonProperty("dependsOn", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string[] DependsOn { get; set; }

@@ -1,5 +1,4 @@
-﻿using AdfToArm.Common;
-using AdfToArm.Models.Pipelines.Common;
+﻿using AdfToArm.Models.Common;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 

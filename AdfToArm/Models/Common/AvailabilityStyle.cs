@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace AdfToArm.Common
+namespace AdfToArm.Models.Common
 {
     public enum AvailabilityStyle
     {

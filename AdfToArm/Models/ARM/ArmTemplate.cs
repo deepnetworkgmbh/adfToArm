@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace AdfToArm.Models.ARM
 {
@@ -9,8 +10,8 @@ namespace AdfToArm.Models.ARM
         {
             Schema = @"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#";
             ContentVersion = "1.0.0.0";
-            Parameters = new ArmParameter[0];
-            Resources = new ArmResource[0];
+            Parameters = new List<ArmParameter>();
+            Resources = new List<ArmResource>();
         }
 
         [JsonProperty("$schema", Required = Required.Always)]
@@ -20,9 +21,9 @@ namespace AdfToArm.Models.ARM
         public string ContentVersion { get; set; }
 
         [JsonProperty("parameters", Required = Required.Always)]
-        public ArmParameter[] Parameters { get; set; }
+        public List<ArmParameter> Parameters { get; set; }
 
         [JsonProperty("resources", Required = Required.Always)]
-        public ArmResource[] Resources { get; set; }
+        public List<ArmResource> Resources { get; set; }
     }
 }

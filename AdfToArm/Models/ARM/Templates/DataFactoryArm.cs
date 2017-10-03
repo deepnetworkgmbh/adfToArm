@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace AdfToArm.Models.ARM.Tempaltes
 {
@@ -10,7 +11,7 @@ namespace AdfToArm.Models.ARM.Tempaltes
             ApiVersion = Constants.DataFactoryApiVersion;
             Type = Constants.DataFactoryType;
             Location = Constants.ResourceGroupLocation;
-            Resources = new ArmResource[0];
+            Resources = new List<ArmResource>();
         }
 
         public DataFactoryArm(string name) : this()
@@ -20,9 +21,7 @@ namespace AdfToArm.Models.ARM.Tempaltes
 
         public void AddResource(ArmResource resource)
         {
-            var previousResources = Resources;
-            Resources = new ArmResource[previousResources.Length + 1];
-            Resources[previousResources.Length] = resource;
+            Resources.Add(resource);
         }
     }
 }

@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 
-namespace AdfToArm.Common
+namespace AdfToArm.Models.Common
 {
     public class PairConverter : JsonConverter
     {

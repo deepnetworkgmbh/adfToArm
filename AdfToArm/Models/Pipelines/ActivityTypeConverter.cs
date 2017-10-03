@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AdfToArm.Logs;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -46,8 +47,7 @@ namespace AdfToArm.Models.Pipelines
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine();
-                        Console.WriteLine($"Activity {typeValue}. \"{ex.Message}\" was handled processing {token["name"]}");
+                        Logger.Instance.Warn($"Activity {typeValue}. \"{ex.Message}\" was handled processing {token["name"]}");
                     }
                 }
             }
