@@ -8,7 +8,7 @@ namespace AdfToArm.Logs
 
         public void Error(string message)
         {
-            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine();
             Console.WriteLine($"[{DateTime.UtcNow}]: ERROR! {message}");
             Console.WriteLine();
@@ -30,7 +30,7 @@ namespace AdfToArm.Logs
 
         public void Warn(string message)
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine();
             Console.WriteLine($"[{DateTime.UtcNow}]: {message}");
             Console.WriteLine();

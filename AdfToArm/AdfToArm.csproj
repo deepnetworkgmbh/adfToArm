@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdfCompiler.cs" />
+    <Compile Include="AdfParseException.cs" />
     <Compile Include="AdfSerializer.cs" />
     <Compile Include="Logs\ConsoleLogger.cs" />
     <Compile Include="Logs\ILogger.cs" />

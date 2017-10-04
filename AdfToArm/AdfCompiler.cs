@@ -17,6 +17,7 @@ namespace AdfToArm
         private readonly List<Pipeline> _pipelines = new List<Pipeline>();
 
         private DataFactoryArm _arm;
+        private bool _isCorrupted;
 
         private AdfCompiler(string path)
         {
@@ -32,21 +33,26 @@ namespace AdfToArm
 
             foreach (var file in allFiles)
             {
-                var tuple = AdfSerializer.Deserialize(file);
-                switch(tuple.value)
+                try
                 {
-                    case DataSet dataset:
-                        _dataSets.Add(dataset);
-                        break;
-                    case LinkedService linkedService:
-                        _linkedService.Add(linkedService);
-                        break;
-                    case Pipeline pipeline:
-                        _pipelines.Add(pipeline);
-                        break;
-                    default:
-                        Logs.Logger.Instance.Warn($"Skipping file at {file}");
-                        break;
+                    var tuple = AdfSerializer.Deserialize(file);
+                    switch (tuple.value)
+                    {
+                        case DataSet dataset:
+                            _dataSets.Add(dataset);
+                            break;
+                        case LinkedService linkedService:
+                            _linkedService.Add(linkedService);
+                            break;
+                        case Pipeline pipeline:
+                            _pipelines.Add(pipeline);
+                            break;
+                    }
+                }
+                catch (AdfParseException)
+                {
+                    _isCorrupted = true;
+                    return this;
                 }
             }
 
@@ -55,6 +61,9 @@ namespace AdfToArm
 
         public AdfCompiler CreateArmTemplate()
         {
+            if (_isCorrupted)
+                return this;
+
             var name = GetAdfName();
             _arm = new DataFactoryArm(name);
 
@@ -70,6 +79,9 @@ namespace AdfToArm
 
         public void SaveArmTo(string path)
         {
+            if (_isCorrupted)
+                return;
+
             var json = AdfSerializer.Serialize(_arm);
 
             File.WriteAllText(path, json);

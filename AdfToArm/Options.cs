@@ -20,7 +20,6 @@ namespace AdfToArm
                 else
                 {
                     Logger.Instance.Error("only .dfproj files are supported");
-                    throw new NotSupportedException("only .dfproj files are supported");
                 }
             }
         }

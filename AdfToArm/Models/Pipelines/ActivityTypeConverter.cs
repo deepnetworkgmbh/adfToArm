@@ -20,7 +20,7 @@ namespace AdfToArm.Models.Pipelines
 
             foreach (var token in activityArray)
             {
-                var typeValue = token["type"].ToString();
+                var typeValue = token["type"]?.ToString();
 
                 if (Enum.TryParse(typeValue, out ActivityType activityType))
                 {
@@ -45,10 +45,16 @@ namespace AdfToArm.Models.Pipelines
                                 break;
                         }
                     }
-                    catch (Exception ex)
+                    catch (JsonSerializationException ex)
                     {
-                        Logger.Instance.Warn($"Activity {typeValue}. \"{ex.Message}\" was handled processing {token["name"]}");
+                        Logger.Instance.Error($"Activity {typeValue}. \"{ex.Message}\" was handled processing {token["name"]}");
+                        throw new AdfParseException($"Activity {typeValue}", ex);
                     }
+                }
+                else
+                {
+                    Logger.Instance.Error($"Unable to get Activity type {typeValue}");
+                    throw new AdfParseException($"Unable to get Activity type {typeValue}");
                 }
             }
 

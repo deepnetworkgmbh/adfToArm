@@ -29,27 +29,55 @@ namespace AdfToArm
             if (jsonString.Contains("activities"))
             {
                 // Pipeline
-                var jo = JObject.Parse(jsonString);
-                var pipeline = jo.ToObject<Pipeline>();
-                return (AdfItemType.Pipeline, pipeline);
+                try
+                {
+                    var jo = JObject.Parse(jsonString);
+                    var pipeline = jo.ToObject<Pipeline>();
+                    return (AdfItemType.Pipeline, pipeline);
+                }
+                catch (JsonReaderException ex)
+                {
+                    Logger.Instance.Error($"JSON parse failed. \"{ex.Message}\" was handled processing {file}");
+                    throw new AdfParseException("JSON parse failed", ex, file);
+                }
+                catch (JsonSerializationException ex)
+                {
+                    Logger.Instance.Error($"Pipeline parsing failed. \"{ex.Message}\" was handled processing {file}");
+                    throw new AdfParseException("Pipeline parsing failed", ex, file);
+                }
             }
             else if (jsonString.Contains("availability"))
             {
                 // DataSet
-                return DeserializeDataSet(file, jsonString);
+                try
+                {
+                    return DeserializeDataSet(file, jsonString);
+                }
+                catch (JsonReaderException ex)
+                {
+                    Logger.Instance.Error($"JSON parse failed. \"{ex.Message}\" was handled processing {file}");
+                    throw new AdfParseException("JSON parse failed", ex, file);
+                }
             }
             else if (jsonString.Contains("typeProperties"))
             {
                 // Linked Service
-                return DeserializeLinkedService(file, jsonString);
+                try
+                {
+                    return DeserializeLinkedService(file, jsonString);
+                }
+                catch (JsonReaderException ex)
+                {
+                    Logger.Instance.Error($"JSON parse failed. \"{ex.Message}\" was handled processing {file}");
+                    throw new AdfParseException("JSON parse failed", ex, file);
+                }
             }
             else
             {
                 // ???
                 Logger.Instance.Info($"Unexpected content in {file}");
+                throw new AdfParseException("File contains unexpected content", file);
             }
-
-            return (AdfItemType.Unknown, null);
         }
 
         public static JObject GetJsonObject(string file)
@@ -62,7 +90,7 @@ namespace AdfToArm
         {
             var jo = JObject.Parse(jsonString);
 
-            var typeValue = jo["properties"]["type"].Value<string>();
+            var typeValue = jo["properties"]?["type"]?.Value<string>();
             if (Enum.TryParse(typeValue, out DataSetType dataSetType))
             {
                 DataSet dataset = null;
@@ -83,20 +111,22 @@ namespace AdfToArm
 
                     return (AdfItemType.DataSet, dataset);
                 }
-                catch (Exception ex)
+                catch (JsonSerializationException ex)
                 {
-                    Logger.Instance.Warn($"DataSet {typeValue}. \"{ex.Message}\" was handled processing {file}");
+                    Logger.Instance.Error($"DataSet {typeValue}. \"{ex.Message}\" was handled processing {file}");
+                    throw new AdfParseException($"DataSet {typeValue}", ex, file);
                 }
             }
 
-            return (AdfItemType.Unknown, null);
+            Logger.Instance.Error($"Unable to get Data Set type from file {file}");
+            throw new AdfParseException($"Unable to get Data Set type from file", file);
         }
 
         private static (AdfItemType type, object value) DeserializeLinkedService(string file, string jsonString)
         {
             var jo = JObject.Parse(jsonString);
 
-            var typeValue = jo["properties"]["type"].Value<string>();
+            var typeValue = jo["properties"]?["type"]?.Value<string>();
             if (Enum.TryParse(typeValue, out LinkedServiceType linkedServiceType))
             {
                 try
@@ -126,13 +156,15 @@ namespace AdfToArm
 
                     return (AdfItemType.LinkedService, linkedService);
                 }
-                catch (Exception ex)
+                catch (JsonSerializationException ex)
                 {
-                    Logger.Instance.Warn($"LinkedService {typeValue}. \"{ex.Message}\" was handled processing {file}");
+                    Logger.Instance.Error($"LinkedService {typeValue}. \"{ex.Message}\" was handled processing {file}");
+                    throw new AdfParseException($"LinkedService {typeValue}", ex, file);
                 }
             }
 
-            return (AdfItemType.Unknown, null);
+            Logger.Instance.Error($"Unable to get Linked Service type from file {file}");
+            throw new AdfParseException($"Unable to get Linked Service type from file", file);
         }
     }
 }
