@@ -67,6 +67,7 @@
     <Compile Include="Logs\Logger.cs" />
     <Compile Include="Models\AdfItemType.cs" />
     <Compile Include="Models\ARM\ArmParameter.cs" />
+    <Compile Include="Models\ARM\ArmParameterConverter.cs" />
     <Compile Include="Models\ARM\ArmResource.cs" />
     <Compile Include="Models\ARM\ArmTemplate.cs" />
     <Compile Include="Models\ARM\Constants.cs" />
