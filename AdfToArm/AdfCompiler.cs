@@ -7,6 +7,7 @@ using AdfToArm.Models.Pipelines;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -153,11 +154,11 @@ namespace AdfToArm
                 var resource = _arm.Resources[0].Resources[i];
                 var name = GetNodeName(resource);
 
-                ProcessNode(jo["resources"].First()["resources"].ElementAt(i), resource, $"resources_{name}");
+                ProcessNodeElement(jo["resources"].First()["resources"].ElementAt(i), resource, $"resources_{name}");
             }
         }
 
-        private void ProcessNode(JToken jt, object nodeObject, string fullName)
+        private void ProcessNodeElement(JToken jt, object nodeObject, string fullName)
         {
             if (nodeObject == null)
                 return;
@@ -166,7 +167,21 @@ namespace AdfToArm
             if (IsSimple(nodeType) || (nodeType.IsArray && IsSimple(nodeType.GetElementType())))
                 return;
 
-            foreach(var prop in nodeObject.GetType().GetProperties())
+            if (nodeObject is IEnumerable enumerator)
+            {
+                var counter = 0;
+                foreach(var element in enumerator)
+                    ProcessNodeObject(jt[counter++], element, $"{fullName}{counter}");
+            }
+            else
+            {
+                ProcessNodeObject(jt, nodeObject, fullName);
+            }
+        }
+
+        private void ProcessNodeObject(JToken jt, object nodeObject, string fullName)
+        {
+            foreach (var prop in nodeObject.GetType().GetProperties())
             {
                 var attributes = prop.GetCustomAttributes(false);
                 if (attributes.Any(i => i is ArmParameterAttribute))
@@ -182,7 +197,7 @@ namespace AdfToArm
                     //var name = GetNodeName(nextNode);
                     var jsonName = GetJsonPropertyName(prop);
 
-                    ProcessNode(jt[jsonName], nextNode,  $"{fullName}_{jsonName}");
+                    ProcessNodeElement(jt[jsonName], nextNode, $"{fullName}_{jsonName}");
                 }
             }
         }
@@ -257,6 +272,7 @@ namespace AdfToArm
 
         private string GetAllowedType(Type type)
         {
+            Logs.Logger.Instance.Info($"{type.Name}");
             switch(type.Name)
             {
                 case "Int16":
