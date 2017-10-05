@@ -3,6 +3,7 @@
 namespace AdfToArm.Models.ARM
 {
     [JsonConverter(typeof(ArmParameterConverter))]
+    [JsonObject]
     public class ArmParameter
     {
         public string Name { get; set; }
@@ -16,13 +17,13 @@ namespace AdfToArm.Models.ARM
         [JsonProperty("type", Required = Required.Always)]
         public string Type { get; set; }
 
-        [JsonProperty("defaultValue", Required = Required.Default)]
+        [JsonProperty("defaultValue", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public object DefaultValue { get; set; }
 
-        [JsonProperty("allowedValues", Required = Required.Default)]
+        [JsonProperty("allowedValues", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public object[] AllowedValues { get; set; }
 
-        [JsonProperty("metadata", Required = Required.Default)]
+        [JsonProperty("metadata", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public ParameterMetadata Metadata { get; set; }
     }
 

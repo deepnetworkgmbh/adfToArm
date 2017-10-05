@@ -52,6 +52,7 @@ namespace AdfToArm.Models.Pipelines
         /// You must specify both values to set an active period for the pipeline to run. 
         /// If you do not specify start and end times when creating a pipeline, you can set them using the Set-AzureRmDataFactoryPipelineActivePeriod cmdlet later.
         /// </summary>
+        [ArmParameter]
         [JsonProperty("start", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public DateTime? Start { get; set; }
 
@@ -63,6 +64,7 @@ namespace AdfToArm.Models.Pipelines
         /// If you specify a value for the start property, you must specify value for the end property. 
         /// See notes for the start property.
         /// </summary>
+        [ArmParameter]
         [JsonProperty("end", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public DateTime? End { get; set; }
 
@@ -87,6 +89,7 @@ namespace AdfToArm.Models.Pipelines
         /// Duration of time after creation for which the pipeline is valid and should remain provisioned. 
         /// If it does not have any active, failed, or pending runs, the pipeline is deleted automatically once it reaches the expiration time.
         /// </summary>
+        [ArmParameter]
         [JsonProperty("expirationTime", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public TimeSpan? ExpirationTime { get; set; }
     }

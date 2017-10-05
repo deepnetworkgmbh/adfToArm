@@ -9,6 +9,7 @@ namespace AdfToArm.Models.DataSets.DataSetTypes
         /// <summary>
         /// Path to the container and folder in the blob storage. Example: myblobcontainer\myblobfolder\
         /// </summary>
+        [ArmParameter]
         [JsonProperty("folderPath", Required = Required.Always)]
         public string FolderPath { get; set; }
 
@@ -21,6 +22,7 @@ namespace AdfToArm.Models.DataSets.DataSetTypes
         /// 
         /// When fileName is not specified for an output dataset, the name of the generated file would be in the following this format: Data..txt (for example: : Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt
         /// </summary>
+        [ArmParameter]
         [JsonProperty("fileName", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string FileName { get; set; }
 

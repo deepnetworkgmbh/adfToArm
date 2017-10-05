@@ -9,6 +9,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// Specify information about the Azure Data Lake Store account. 
         /// It is in the following format: https://[accountname].azuredatalakestore.net/webhdfs/v1 or adl://[accountname].azuredatalakestore.net/.
         /// </summary>
+        [ArmParameter]
         [JsonProperty("dataLakeStoreUri", Required = Required.Always)]
         public string DataLakeStoreUri { get; set; }
 
@@ -17,6 +18,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for sink
         /// </summary>
+        [ArmParameter]
         [JsonProperty("subscriptionId", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string SubscriptionId { get; set; }
 
@@ -25,6 +27,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for sink
         /// </summary>
+        [ArmParameter]
         [JsonProperty("resourceGroupName", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string ResourceGroupName { get; set; }
 
@@ -33,6 +36,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for service principal authentication
         /// </summary>
+        [ArmParameter]
         [JsonProperty("servicePrincipalId", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string ServicePrincipalId { get; set; }
 
@@ -41,6 +45,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for service principal authentication
         /// </summary>
+        [ArmParameter]
         [JsonProperty("servicePrincipalKey", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string ServicePrincipalKey { get; set; }
 
@@ -50,6 +55,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for service principal authentication
         /// </summary>
+        [ArmParameter]
         [JsonProperty("tenant", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string Tenant { get; set; }
 
@@ -58,6 +64,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for user credential authentication
         /// </summary>
+        [ArmParameter]
         [JsonProperty("authorization", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string Authorization { get; set; }
 
@@ -68,6 +75,7 @@ namespace AdfToArm.Models.LinkedServices.LinkedServiceTypeProperties
         /// 
         /// Required for user credential authentication
         /// </summary>
+        [ArmParameter]
         [JsonProperty("sessionId", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string SessionId { get; set; }
     }

@@ -1,10 +1,16 @@
-﻿using AdfToArm.Models.ARM.Tempaltes;
+﻿using AdfToArm.Models;
+using AdfToArm.Models.ARM;
+using AdfToArm.Models.ARM.Tempaltes;
 using AdfToArm.Models.DataSets;
 using AdfToArm.Models.LinkedServices;
 using AdfToArm.Models.Pipelines;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace AdfToArm
 {
@@ -16,7 +22,8 @@ namespace AdfToArm
         private readonly List<LinkedService> _linkedService = new List<LinkedService>();
         private readonly List<Pipeline> _pipelines = new List<Pipeline>();
 
-        private DataFactoryArm _arm;
+        private readonly List<ArmParameter> _parameters = new List<ArmParameter>();
+        private ArmTemplate _arm;
         private bool _isCorrupted;
 
         private AdfCompiler(string path)
@@ -51,8 +58,8 @@ namespace AdfToArm
                 }
                 catch (AdfParseException)
                 {
-                    _isCorrupted = true;
-                    return this;
+                    //_isCorrupted = true;
+                    //return this;
                 }
             }
 
@@ -65,14 +72,17 @@ namespace AdfToArm
                 return this;
 
             var name = GetAdfName();
-            _arm = new DataFactoryArm(name);
+            var dfArm = new DataFactoryArm(name);
 
             foreach (var ls in _linkedService)
-                _arm.AddResource(new LinkedServiceArm(name, ls));
+                dfArm.AddResource(new LinkedServiceArm(name, ls));
             foreach (var ds in _dataSets)
-                _arm.AddResource(new DataSetArm(name, ds));
+                dfArm.AddResource(new DataSetArm(name, ds));
             foreach (var pl in _pipelines)
-                _arm.AddResource(new PipelineArm(name, pl));
+                dfArm.AddResource(new PipelineArm(name, pl));
+
+            _arm = new ArmTemplate();
+            _arm.Resources.Add(dfArm);
 
             return this;
         }
@@ -82,7 +92,15 @@ namespace AdfToArm
             if (_isCorrupted)
                 return;
 
-            var json = AdfSerializer.Serialize(_arm);
+            var jo = JObject.FromObject(_arm);
+
+            GenerateAndReplaceParameters(jo);
+
+            var ja = jo["parameters"] as JArray;
+            foreach (var param in _parameters)
+                ja.Add(JObject.FromObject(param));
+
+            var json = jo.ToString(Formatting.Indented);
 
             File.WriteAllText(path, json);
         }
@@ -126,6 +144,142 @@ namespace AdfToArm
             }
 
             throw new NotSupportedException($"{_projectPath} is not a directory and not an ADF project");
+        }
+
+        private void GenerateAndReplaceParameters(JObject jo)
+        {
+            for(var i = 0; i < _arm.Resources[0].Resources.Count; i++)
+            {
+                var resource = _arm.Resources[0].Resources[i];
+                var name = GetNodeName(resource);
+
+                ProcessNode(jo["resources"].First()["resources"].ElementAt(i), resource, $"resources_{name}");
+            }
+        }
+
+        private void ProcessNode(JToken jt, object nodeObject, string fullName)
+        {
+            if (nodeObject == null)
+                return;
+
+            var nodeType = nodeObject.GetType();
+            if (IsSimple(nodeType) || (nodeType.IsArray && IsSimple(nodeType.GetElementType())))
+                return;
+
+            foreach(var prop in nodeObject.GetType().GetProperties())
+            {
+                var attributes = prop.GetCustomAttributes(false);
+                if (attributes.Any(i => i is ArmParameterAttribute))
+                {
+                    var jsonName = GetJsonPropertyName(prop);
+                    var type = GetAllowedType(prop.GetType());
+                    ReplacePropertyWithParameter(jt, prop.GetValue(nodeObject), type, fullName, jsonName);
+                }
+                else if (attributes.Any(i => i is JsonPropertyAttribute))
+                {
+                    var nextNode = prop.GetValue(nodeObject);
+
+                    //var name = GetNodeName(nextNode);
+                    var jsonName = GetJsonPropertyName(prop);
+
+                    ProcessNode(jt[jsonName], nextNode,  $"{fullName}_{jsonName}");
+                }
+            }
+        }
+
+        private string GetNodeName(object nodeObject)
+        {
+            var nameProperty = nodeObject.GetType().GetProperty("Name");
+
+            if (nameProperty != null)
+            {
+                return nameProperty.GetValue(nodeObject).ToString();
+            }
+            else
+            {
+                var jsonAttr = nodeObject.GetType().GetCustomAttributes(false).FirstOrDefault(i => i is JsonPropertyAttribute);
+
+                var jsonName = jsonAttr != null
+                    ? (jsonAttr as JsonPropertyAttribute).PropertyName
+                    : nodeObject.GetType().Name;
+
+                return jsonName;
+            }
+        }
+
+        private string GetJsonPropertyName(PropertyInfo property)
+        {
+            var jsonAttr = property.GetCustomAttributes(false).FirstOrDefault(i => i is JsonPropertyAttribute);
+
+            var jsonName = jsonAttr != null
+                ? (jsonAttr as JsonPropertyAttribute).PropertyName
+                : property.GetType().Name;
+
+            return jsonName;
+        }
+
+        private void ReplacePropertyWithParameter(JToken jt, object prop, string type, string fullName, string jsonName)
+        {
+            // Create parameter and replace in jo
+            var parameterName = $"{fullName}_{jsonName}";
+
+            var armParam = new ArmParameter()
+            {
+                Name = parameterName,
+                Properties = new ArmParameterProperties
+                {
+                    DefaultValue = prop,
+                    Type = type
+                }
+            };
+            _parameters.Add(armParam);
+
+            switch(jt[jsonName])
+            {
+                case JValue jvalue:
+                    jvalue.Value = $"[parameters('{parameterName}')]";
+                    break;
+                case JProperty jprop:
+                    jprop.Value = $"[parameters('{parameterName}')]";
+                    break;
+                case JArray jarray:
+                    var arrayParent = jarray.Parent;
+                    jarray.Remove();
+                    arrayParent.Add(new JProperty(jsonName, $"[parameters('{parameterName}')]"));
+                    break;
+                case JObject jo:
+                    var objectParent = jo.Parent;
+                    jo.Remove();
+                    objectParent.Add(new JProperty(jsonName, $"[parameters('{parameterName}')]"));
+                    break;
+            }
+        }
+
+        private string GetAllowedType(Type type)
+        {
+            switch(type.Name)
+            {
+                case "Int16":
+                case "Int32":
+                    return "int";
+                case "Boolean":
+                    return "bool";
+                default:
+                    return "string";
+            }
+        }
+
+        private bool IsSimple(Type type)
+        {
+            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+            {
+                // nullable type, check if the nested type is simple.
+                return IsSimple(type.GetGenericArguments()[0]);
+            }
+            return type.IsPrimitive
+              || type.IsEnum
+              || type.Equals(typeof(string))
+              || type.Equals(typeof(decimal));
         }
     }
 }
