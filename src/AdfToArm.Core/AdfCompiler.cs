@@ -39,7 +39,7 @@ namespace AdfToArm.Core
             var adjustedPath = AdjustProjectPath();
             string[] allFiles = Directory.GetFiles(adjustedPath, "*.json", SearchOption.AllDirectories);
 
-            foreach (var file in allFiles)
+            foreach (var file in allFiles.Where(i=> !i.Contains(@"\bin\") && !i.Contains(@"\obj\")))
             {
                 try
                 {
@@ -59,8 +59,8 @@ namespace AdfToArm.Core
                 }
                 catch (AdfParseException)
                 {
-                    //_isCorrupted = true;
-                    //return this;
+                    _isCorrupted = true;
+                    return this;
                 }
             }
 

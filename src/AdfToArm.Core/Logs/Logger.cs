@@ -2,6 +2,6 @@
 {
     public static class Logger
     {
-        public static ILogger Instance { get; set; }
+        public static ILogger Instance { get; set; } = new TraceLogger();
     }
 }
