@@ -1,5 +1,7 @@
-﻿using AdfToArm.Logs;
+﻿using AdfToArm.Core;
+using AdfToArm.Core.Logs;
 using CommandLine;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -10,6 +12,7 @@ namespace AdfToArm
     {
         public static void Main(string[] args)
         {
+            Logger.Instance = new ConsoleLogger();
             var result = Parser.Default.ParseArguments<Options>(args)
               .WithParsed(RunCompiler)
               .WithNotParsed(LogErrors);
@@ -17,22 +20,30 @@ namespace AdfToArm
 
         private static void RunCompiler(Options obj)
         {
+            Logger.Instance.SetLoggingLevel(obj.Verbose);
             Regex rgx = new Regex("[^a-zA-Z0-9]");
 
-            var fileInfo = new FileInfo(obj.PathToProject);
-            var name = fileInfo.Name
-                .Substring(0, fileInfo.Name.Length - 7) // remove .dbproj from the end of the file name
-                .Replace('.', '-'); // dots are replaced with dashes for better readability
-            name = rgx.Replace(name, "");
+            try
+            {
+                var fileInfo = new FileInfo(obj.PathToProject);
+                var name = fileInfo.Name
+                    .Substring(0, fileInfo.Name.Length - 7) // remove .dbproj from the end of the file name
+                    .Replace('.', '-'); // dots are replaced with dashes for better readability
+                name = rgx.Replace(name, "");
 
-            if (!Directory.Exists(obj.OutputFolder))
-                Directory.CreateDirectory(obj.OutputFolder);
+                if (!Directory.Exists(obj.OutputFolder))
+                    Directory.CreateDirectory(obj.OutputFolder);
 
-            AdfCompiler
-                .New(obj.PathToProject)
-                .ParseAdfTemplates()
-                .CreateArmTemplate()
-                .SaveArmTo(Path.Combine(obj.OutputFolder, $"{name}.json"));
+                AdfCompiler
+                    .New(obj.PathToProject)
+                    .ParseAdfTemplates()
+                    .CreateArmTemplate()
+                    .SaveArmTo(Path.Combine(obj.OutputFolder, $"{name}.json"));
+            }
+            catch(Exception ex)
+            {
+                Logger.Instance.Error($"Unexpected exception {ex.Message} of type {ex.GetType()} at {Environment.NewLine}{ex.StackTrace}");
+            }
         }
 
         private static void LogErrors(IEnumerable<Error> errors)

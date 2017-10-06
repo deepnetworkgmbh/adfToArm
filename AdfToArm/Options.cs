@@ -1,13 +1,12 @@
-﻿using AdfToArm.Logs;
+﻿using AdfToArm.Core.Logs;
 using CommandLine;
-using System;
 
 namespace AdfToArm
 {
     public class Options
     {
         private string _path;
-        [Option('p', "path", Required = true, HelpText = "Path to the ADF project")]
+        [Option('i', "input", Required = true, HelpText = "Path to the ADF project")]
         public string PathToProject
         {
             get => _path;

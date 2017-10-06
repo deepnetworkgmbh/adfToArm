@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdfToArm", "AdfToArm\AdfToArm.csproj", "{70A66F8B-FA1B-4699-BA8E-E4CBB3A6ED66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdfToArm.Core", "AdfToArm.Core\AdfToArm.Core.csproj", "{FCFF46A0-18FE-4010-9994-1A1C68A6A2EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{70A66F8B-FA1B-4699-BA8E-E4CBB3A6ED66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70A66F8B-FA1B-4699-BA8E-E4CBB3A6ED66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70A66F8B-FA1B-4699-BA8E-E4CBB3A6ED66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCFF46A0-18FE-4010-9994-1A1C68A6A2EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCFF46A0-18FE-4010-9994-1A1C68A6A2EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCFF46A0-18FE-4010-9994-1A1C68A6A2EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCFF46A0-18FE-4010-9994-1A1C68A6A2EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
