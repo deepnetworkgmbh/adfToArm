@@ -5,6 +5,7 @@ namespace AdfToArm.Core.Models.ARM
 {
     public abstract class ArmResource
     {
+        [ArmParameter]
         [JsonProperty("name", Required = Required.Always)]
         public string Name { get; set; }
 

@@ -97,9 +97,13 @@ namespace AdfToArm.Core
 
             GenerateAndReplaceParameters(jo);
 
-            var ja = jo["parameters"] as JArray;
+            var ja = jo["parameters"] as JObject;
             foreach (var param in _parameters)
-                ja.Add(JObject.FromObject(param));
+            {
+                var name = param.Name;
+                var content = JObject.FromObject(param.Properties);
+                ja.Add(name, content);
+            }
 
             var json = jo.ToString(Formatting.Indented);
 
@@ -149,13 +153,10 @@ namespace AdfToArm.Core
 
         private void GenerateAndReplaceParameters(JObject jo)
         {
-            for(var i = 0; i < _arm.Resources[0].Resources.Count; i++)
-            {
-                var resource = _arm.Resources[0].Resources[i];
-                var name = GetNodeName(resource);
+            var resource = _arm.Resources[0];
+            var name = GetNodeName(resource);
 
-                ProcessNodeElement(jo["resources"].First()["resources"].ElementAt(i), resource, $"resources_{name}");
-            }
+            ProcessNodeElement(jo["resources"].First(), resource, $"resources_{name}");
         }
 
         private void ProcessNodeElement(JToken jt, object nodeObject, string fullName)
@@ -245,7 +246,7 @@ namespace AdfToArm.Core
                 Name = parameterName,
                 Properties = new ArmParameterProperties
                 {
-                    DefaultValue = prop,
+                    DefaultValue = GetDefaultValue(prop, type),
                     Type = type
                 }
             };
@@ -271,6 +272,31 @@ namespace AdfToArm.Core
                 case null:
                     (jt as JObject).Add(new JProperty(jsonName, $"[parameters('{parameterName}')]"));
                     break;
+            }
+        }
+
+        private object GetDefaultValue(object prop, string type)
+        {
+            switch (type)
+            {
+                case "string":
+                    if (prop == null)
+                        return string.Empty;
+
+                    if (prop is String stringProp)
+                    {
+                        stringProp = stringProp.Replace("[", "");
+                        stringProp = stringProp.Replace("]", "");
+                        return stringProp;
+                    }
+                    else
+                        return prop;
+                case "object":
+                    return prop == null ? new object() : prop;
+                case "array":
+                    return prop == null ? new object[0] : prop;
+                default:
+                    return prop;
             }
         }
     }
