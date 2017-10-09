@@ -10,7 +10,7 @@ namespace AdfToArm.Core.Models.ARM
         {
             Schema = @"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#";
             ContentVersion = "1.0.0.0";
-            Parameters = new List<ArmParameter>();
+            Parameters = new object();
             Resources = new List<ArmResource>();
         }
 
@@ -21,7 +21,7 @@ namespace AdfToArm.Core.Models.ARM
         public string ContentVersion { get; set; }
 
         [JsonProperty("parameters", Required = Required.Always)]
-        public List<ArmParameter> Parameters { get; set; }
+        public object Parameters { get; set; }
 
         [JsonProperty("resources", Required = Required.Always)]
         public List<ArmResource> Resources { get; set; }
