@@ -7,6 +7,14 @@ namespace AdfToArm.Core
 {
     public static class EnumExtensions
     {
+        public static string ToEnumString<T>(this T type)
+        {
+            var enumType = type.GetType();
+            var name = Enum.GetName(enumType, type);
+            var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
+            return enumMemberAttribute.Value;
+        }
+
         public static T ToEnum<T>(this string str)
         {
             var enumType = typeof(T);

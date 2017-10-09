@@ -289,6 +289,8 @@ namespace AdfToArm.Core
                         stringProp = stringProp.Replace("]", "");
                         return stringProp;
                     }
+                    else if (prop is Enum)
+                        return prop.ToEnumString();
                     else
                         return prop;
                 case "object":
