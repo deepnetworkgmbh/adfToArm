@@ -188,10 +188,18 @@ namespace AdfToArm.Core
                 var armParamAttribute = attributes.FirstOrDefault(i => i is ArmParameterAttribute) as ArmParameterAttribute;
                 if (armParamAttribute != null)
                 {
-                    var jsonName = GetJsonPropertyName(prop);
+                    var jsonName = GetJsonPropertyName(prop) ;
+                    var parameterName = string.IsNullOrEmpty(armParamAttribute.Name)
+                        ? $"{fullName}_{jsonName}"
+                        : armParamAttribute.Name;
                     var type = armParamAttribute.Type;
 
-                    ReplacePropertyWithParameter(jt, prop.GetValue(nodeObject), type, fullName, jsonName);
+                    ReplacePropertyWithParameter(
+                        jt, 
+                        GetDefaultValue(prop.GetValue(nodeObject), type, armParamAttribute.RemoveBrackets), 
+                        type, 
+                        parameterName, 
+                        jsonName);
                 }
                 else if (attributes.Any(i => i is JsonPropertyAttribute))
                 {
@@ -236,24 +244,24 @@ namespace AdfToArm.Core
             return jsonName;
         }
 
-        private void ReplacePropertyWithParameter(JToken jt, object prop, string type, string fullName, string jsonName)
+        private void ReplacePropertyWithParameter(JToken jt, object prop, string type, string parameterName, string jsonName)
         {
-            // Create parameter and replace in jo
-            var parameterName = $"{fullName}_{jsonName}";
-
             var armParam = new ArmParameter()
             {
                 Name = parameterName,
                 Properties = new ArmParameterProperties
                 {
-                    DefaultValue = GetDefaultValue(prop, type),
+                    DefaultValue = prop,
                     Type = type
                 }
             };
 
+            if (_parameters.Any(i => i.Name == armParam.Name))
+                return;
+
             _parameters.Add(armParam);
 
-            switch(jt[jsonName])
+            switch (jt[jsonName])
             {
                 case JValue jvalue:
                     jvalue.Value = $"[parameters('{parameterName}')]";
@@ -275,7 +283,7 @@ namespace AdfToArm.Core
             }
         }
 
-        private object GetDefaultValue(object prop, string type)
+        private object GetDefaultValue(object prop, string type, bool removeBrackets)
         {
             switch (type)
             {
@@ -283,7 +291,7 @@ namespace AdfToArm.Core
                     if (prop == null)
                         return string.Empty;
 
-                    if (prop is String stringProp)
+                    if (removeBrackets && prop is String stringProp)
                     {
                         stringProp = stringProp.Replace("[", "");
                         stringProp = stringProp.Replace("]", "");

@@ -9,5 +9,9 @@
         }
 
         public string Type { get; private set; }
+
+        public string Name { get; set; }
+
+        public bool RemoveBrackets { get; set; } = true;
     }
 }
