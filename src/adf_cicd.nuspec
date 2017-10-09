@@ -3,11 +3,11 @@
     <metadata>
         <!-- Required elements-->
         <id>AzureDataFactory.CICD</id>
-        <version>0.1.0</version>
+        <version>0.1.1</version>
         <description>Azure Data Factory to ARM compiler</description>
         <authors>Deepnetwork.com</authors>
-        <licenseUrl>https://github.com/deepnetworkgmbh/</licenseUrl>
-        <projectUrl>https://github.com/deepnetworkgmbh/</projectUrl>
+        <licenseUrl>https://github.com/deepnetworkgmbh/adfToArm/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/deepnetworkgmbh/adfToArm</projectUrl>
 
         <tags>azure, datafactory, azuredatafactory, adf</tags>
         
@@ -18,8 +18,8 @@
     </metadata>
 
     <files>
-        <file src="src\readme.txt" target="readme.txt" />
-        <file src="src\AdfToArm.Core\bin\Release\**\AdfToArm.Core.dll" target="lib" />
-        <file src="src\AdfToArm\bin\Release\*.*" target="tools" exclude="**\*.xml;**\*.pdb" />
+        <file src="readme.txt" target="readme.txt" />
+        <file src="AdfToArm.Core\bin\Release\**\AdfToArm.Core.dll" target="lib" />
+        <file src="AdfToArm\bin\Release\*.*" target="tools" exclude="**\*.xml;**\*.pdb" />
     </files>
 </package>
