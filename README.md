@@ -80,7 +80,8 @@ If no error occurs, resulting ARM template you could find at the path set with `
 
 ### .NET application
 
-You can implement your own version of the tools using the similar code:
+Optional.
+You can implement your own version of the tool using the similar code:
 
 ```csharp
 using AdfToArm.Core;
@@ -106,7 +107,7 @@ namespace AdfToArm
 
 ## Continuous Integration / Continuous Deployment
 
-There is a [separate document(/docs/vsts_cicd.md)] with all details how to implement simple CI/CD pipeline in [Visual Studio Team Service (VSTS)](https://www.visualstudio.com/team-services/)
+There is a [separate document](/docs/vsts_cicd.md) with all details how to implement simple CI/CD pipeline in [Visual Studio Team Service (VSTS)](https://www.visualstudio.com/team-services/)
 
 
 ## Supported ADF Types

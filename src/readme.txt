@@ -11,7 +11,7 @@ Version
 
 Contact Information
 ------------------
-Company name: Deepnetwork
+Company name: Deep Network GmbH.
 Email address: info@deepnetwork.com
 
 
@@ -44,7 +44,8 @@ To get a help page run next command:
 
 - Use C#
 
-You can use C# to build the project. It will check the syntax for your scripts and generate two files: one ARM template file and one ARM parameter file. 
+Optional.
+You can also use C# to create a custom solution based on AdfToArm.Core assembly. It will check the syntax for your scripts and generate two files: one ARM template file and one ARM parameter file. 
 
 You can take the ARM parameter file and modify the settings in it then use the ARM template and ARM parameter file for deployment through ARM api.
 
