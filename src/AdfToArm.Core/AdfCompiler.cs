@@ -39,7 +39,7 @@ namespace AdfToArm.Core
             var adjustedPath = AdjustProjectPath();
             string[] allFiles = Directory.GetFiles(adjustedPath, "*.json", SearchOption.AllDirectories);
 
-            foreach (var file in allFiles.Where(i=> !i.Contains(@"\bin\") && !i.Contains(@"\obj\")))
+            foreach (var file in allFiles)
             {
                 try
                 {
