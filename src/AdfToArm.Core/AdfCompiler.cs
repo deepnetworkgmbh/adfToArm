@@ -93,21 +93,30 @@ namespace AdfToArm.Core
             if (_isCorrupted)
                 return;
 
-            var jo = JObject.FromObject(_arm);
+            var armObject = JObject.FromObject(_arm);
 
-            GenerateAndReplaceParameters(jo);
+            GenerateAndReplaceParameters(armObject);
 
-            var ja = jo["parameters"] as JObject;
+            var parametersObject = armObject["parameters"] as JObject;
             foreach (var param in _parameters)
             {
                 var name = param.Name;
+                // TODO: do it properly...
+                if (name == "Location")
+                    param.Properties.DefaultValue = "northeurope";
                 var content = JObject.FromObject(param.Properties);
-                ja.Add(name, content);
+                parametersObject.Add(name, content);
             }
 
-            var json = jo.ToString(Formatting.Indented);
+            File.WriteAllText(path, armObject.ToString(Formatting.Indented));
 
-            File.WriteAllText(path, json);
+            var armTemplateParameters = new ArmTemplateParameters();
+            armTemplateParameters.Parameters = _parameters.Select(i => new ArmTemplateParameterItem(i)).ToList();
+
+            var paramsFilePath = path.Substring(0, path.Length - 4) + "parameters.json";
+            var paramsFileJson = AdfSerializer.Serialize(armTemplateParameters);
+
+            File.WriteAllText(paramsFilePath, paramsFileJson);
         }
 
         private string AdjustProjectPath()
