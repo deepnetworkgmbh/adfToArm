@@ -4,6 +4,7 @@ using CommandLine;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace AdfToArm
@@ -48,6 +49,12 @@ namespace AdfToArm
 
         private static void LogErrors(IEnumerable<Error> errors)
         {
+            if (errors.FirstOrDefault(i => i is HelpRequestedError) != null)
+                return;
+
+            if (errors.FirstOrDefault(i => i is VersionRequestedError) != null)
+                return;
+
             Logger.Instance.Error("Compiler wasn't able to parse your input");
             foreach (var error in errors)
             {
