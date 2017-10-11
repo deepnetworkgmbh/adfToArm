@@ -1,8 +1,8 @@
 Continuous Integration (CI) / Continuous Deployment (CD) with Visual Studio Team Services (VSTS)
 =====
 
-The whole process is split on three parts:
-  - [Provide a process of getting compiler tool](#compiler-tool)
+The whole process is split into three parts:
+  - [Provide a method of getting compiler tool](#compiler-tool)
   - [Create a Build Definition (ADF project transformation to ARM template)](#vsts-build-definition)
   - [Create a Release Definiton (ARM deployment)](#vsts-release-definition)
 
@@ -13,7 +13,7 @@ From the box Visual Studio ADF project does not support compilation to ARM templ
 Default ADF project also does not support NuGet packages, therefore we need to find a way to get compilator into the project without it.
 In terms of VSTS it can be done in two ways:
 * check in compiled AdfToArm tool into repository with ADF project
-* create class library with referenced AzureDataFactory.CICD nuget package and add it into Visual Studio solution with ADF project.
+* create a class library with referenced AzureDataFactory.CICD nuget package and add it into Visual Studio solution with ADF project.
 
 Here is described second possibility, because it allows convinient package updates, clear version history, smaller repository (obviously, compiled sources are much bigger than referenced NuGet package).
 
@@ -22,7 +22,7 @@ Here is described second possibility, because it allows convinient package updat
 ![Create a class library](/docs/images/cicd/01_create_proj.jpg)
 
 2. Install NuGet package AzureDataFactory.CICD into created class library
-3. Commit and push your changes into the repository. The commit should consist of 4 files:
+3. Commit and push your changes to the repository. The commit should consist of 4 files:
     * Updated solution file
     * packages.config with three NuGet packages inside: *AzureDataFactory.CICD* and dependant *Newtonsoft.Json*, *System.ValueTuple*
     * AssemblyInfo.cs of created class library
@@ -52,7 +52,7 @@ Your repository is ready to be built with VSTS
 
     ![Batch script](/docs/images/cicd/06_bd_cmd.PNG)
 
-    * **Publish Build Artifacts**. Enter *Path to Publish* (**NOTE**: it should be the same as in output parameters from Batch task), any *Artifact name* and choose *Artifact Type* *Server*.
+    * **Publish Build Artifacts**. Enter *Path to Publish* (**NOTE**: it should be the same as in output parameters from the Batch task), any *Artifact name* and choose *Artifact Type* *Server*.
     
     ![Publish task](/docs/images/cicd/07_bd_publish_artifacts.PNG)
 
@@ -64,14 +64,14 @@ Your repository is ready to be built with VSTS
 
 **Pay attention**, current solution doesn't require Visual Studio solution to be built at all. Nuget restores artifact without MSBuild task invocation and script is executed using existing files (executable AdfToArm tool and json files).
 
-This Build Definition artifact as a result will contain two files produced by AdfToArm.exe application: ARM template and parameters file for it. 
+This Build Definition artifact, as a result, will contain two files produced by AdfToArm.exe application: ARM template and parameters file for it. 
 
 Now, you're ready to deploy your artifacts to any environment.
 
 ## VSTS Release Definition
 
 A wide range of ARM parameters allows you to customize your deployment to any environment: the only one thing you need to change is parameters itself. It can be done in two ways:
-* Create separate `arm.parameters.env_name.json` files based on default one with corresponding properties. You can download sample file from any succeed Build:
+* Create separate `arm.parameters.env_name.json` files based on default one with corresponding properties. You can download the sample file from any succeed Build:
 
 ![Artifacts](/docs/images/cicd/09_rd_artifacts.PNG)
 
@@ -90,11 +90,11 @@ Create a Release Definition.
 ![New Artifact](/docs/images/cicd/11_rd_add_artifact.PNG)
 
 5. Enable **Continuous Deployment**:
-    * Press button with lightning symbol on added *Artifact*, enable the trigger and choose the branch.
+    * Press button with a lightning symbol on added *Artifact*, enable the trigger and choose the branch.
     
     ![CD of artifact](/docs/images/cicd/11_1_rd_enable_cd.PNG)
 
-    * Press button with lightning symbol on created *Environment* and select *After release* trigger.
+    * Press button with a lightning symbol on created *Environment* and select *After release* trigger.
     
     ![Start deployment automatically](/docs/images/cicd/11_2_rd_enable_cd.PNG)
 
@@ -105,7 +105,7 @@ Create a Release Definition.
 7. Specify *Task* parameters:
     * Select Azure subscription, Resource group name and location
     * Select *Template* and *Template parameters* by clicking on *...* button
-    * You can override template parameters in corresponding field. In the sample, `-Location` was overrided with *northeurope* value, because ADF is not available in all locations and Resource Group was created in location without ADF support. 
+    * You can override template parameters in the corresponding field. In the sample, `-Location` was overridden with *northeurope* value, because ADF is not available in all locations and Resource Group was created in a location without ADF support. 
 
 ![Task params](/docs/images/cicd/13_rd_arm_task_params.PNG)
 
@@ -113,4 +113,4 @@ Create a Release Definition.
 
 8. Save the Release Definition and create a new release from it.
 
-Your CI/CD pipeline is ready and any commit to the repository will trigger build/release to your Azure Resource Group
+Your CI/CD pipeline is ready, and any commit to the repository will trigger build/release to your Azure Resource Group
