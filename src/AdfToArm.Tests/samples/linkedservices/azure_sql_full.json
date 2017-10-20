@@ -1,0 +1,11 @@
+﻿{
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-09-01/Microsoft.DataFactory.LinkedService.json",
+  "name": "AzureSqlLinkedService1",
+  "properties": {
+    "type": "AzureSqlDatabase",
+    "hubName": "defaultdev01_hub",
+    "typeProperties": {
+      "connectionString": "Server=tcp:serveraddress.database.windows.net,1433;Initial Catalog=dbname;Persist Security Info=False;User ID=username;Password=userpassword;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+    }
+  }
+}

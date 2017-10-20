@@ -1,0 +1,17 @@
+﻿{
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-09-01/Microsoft.DataFactory.LinkedService.json",
+  "name": "AzureDataLakeAnalyticsLinkedService",
+  "properties": {
+    "hubName": "defaultdev01_hub",
+    "type": "AzureDataLakeAnalytics",
+    "typeProperties": {
+      "accountName": "<account name>",
+      "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
+      "servicePrincipalId": "<service principal id>",
+      "servicePrincipalKey": "<service principal key>",
+      "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+      "subscriptionId": "<subscription id>",
+      "resourceGroupName": "<resource group name>"
+    }
+  }
+}

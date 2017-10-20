@@ -27,6 +27,13 @@ namespace AdfToArm.Core.Models.LinkedServices.LinkedServiceTypeProperties
         public string PoolName { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [ArmParameter]
+        [JsonProperty("batchUri", Required = Required.Always)]
+        public string BatchUri { get; set; }
+
+        /// <summary>
         /// Name of the Azure Storage linked service associated with this Azure Batch linked service. 
         /// This linked service is used for staging files required to run the activity and storing the activity execution logs.
         /// </summary>

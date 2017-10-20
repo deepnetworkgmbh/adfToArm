@@ -1,0 +1,11 @@
+﻿{
+  "name": "AzureDataLakeAnalyticsLinkedService",
+  "properties": {
+    "type": "AzureDataLakeAnalytics",
+    "typeProperties": {
+      "accountName": "<account name>",
+      "authorization": "<authcode>",
+      "sessionId": "<session ID>"
+    }
+  }
+}

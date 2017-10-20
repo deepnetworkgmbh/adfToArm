@@ -28,6 +28,9 @@ namespace AdfToArm.Core.Models.LinkedServices
         [JsonConverter(typeof(StringEnumConverter))]
         public LinkedServiceType Type { get; set; }
 
+        [JsonProperty("hubName", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public string HubName { get; set; }
+
         [JsonProperty("typeProperties", Required = Required.Always)]
         public ILinkedServiceProperties TypeProperties { get; set; }
     }
