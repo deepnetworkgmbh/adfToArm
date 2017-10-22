@@ -1,0 +1,14 @@
+﻿{
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-09-01/Microsoft.DataFactory.LinkedService.json",
+  "name": "HDInsightLinkedService1",
+  "properties": {
+    "type": "HDInsight",
+    "hubName": "defaultdev01_hub",
+    "typeProperties": {
+      "clusterUri": " https://<hdinsightclustername>.azurehdinsight.net/",
+      "userName": "admin",
+      "password": "<password>",
+      "linkedServiceName": "MyHDInsightStoragelinkedService"
+    }
+  }
+}

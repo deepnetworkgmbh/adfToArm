@@ -2,6 +2,7 @@
 
 namespace AdfToArm.Core.Models.LinkedServices.LinkedServiceTypeProperties
 {
+    // TODO: Validate LinkedServiceName is a correct Azure Storage linked service
     [JsonObject]
     public class HDInsightTypeProperties : ILinkedServiceProperties
     {
