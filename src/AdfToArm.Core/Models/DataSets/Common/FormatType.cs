@@ -2,6 +2,7 @@
 
 namespace AdfToArm.Core.Models.DataSets.Common
 {
+    // TODO: validate carefully
     [JsonObject]
     public class FormatType
     {

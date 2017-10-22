@@ -7,6 +7,33 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="samples\datasets\azure_blob_full.json" />
+    <None Remove="samples\datasets\azure_blob_min.json" />
+    <None Remove="samples\datasets\azure_datalake_full.json" />
+    <None Remove="samples\datasets\azure_datalake_min.json" />
+    <None Remove="samples\datasets\azure_sql.json" />
+    <None Remove="samples\datasets\dataset_full.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="samples\datasets\azure_blob_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\datasets\azure_blob_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\datasets\azure_datalake_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\datasets\azure_datalake_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\datasets\azure_sql.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\datasets\dataset_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\linkedservices\azure_batch_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -65,9 +92,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dataset\" />
     <Folder Include="Pipeline\" />
-    <Folder Include="samples\datasets\" />
     <Folder Include="samples\pipelines\" />
   </ItemGroup>
 

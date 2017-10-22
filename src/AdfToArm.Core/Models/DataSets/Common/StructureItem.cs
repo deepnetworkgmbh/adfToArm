@@ -2,6 +2,7 @@
 
 namespace AdfToArm.Core.Models.DataSets.Common
 {
+    // TODO: Validate, that format used only for DateTime and DateTimeOffset
     [JsonObject]
     public class StructureItem
     {

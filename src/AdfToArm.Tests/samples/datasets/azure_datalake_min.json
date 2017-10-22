@@ -1,0 +1,14 @@
+{
+  "name": "AzureDataLakeStore1",
+  "properties": {
+    "type": "AzureDataLakeStore",
+    "linkedServiceName": "AzureDataLakeStoreLinkedService1",
+    "typeProperties": {
+      "folderPath": "lake\folder"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    }
+  }
+}
