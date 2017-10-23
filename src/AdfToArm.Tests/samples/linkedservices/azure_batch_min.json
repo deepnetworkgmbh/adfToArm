@@ -1,0 +1,13 @@
+﻿{
+  "name": "AzureBatchLinkedService1",
+  "properties": {
+    "type": "AzureBatch",
+    "typeProperties": {
+      "accountName": "batchdev01",
+      "accessKey": "tfSTfrfl+f8GOsb4SRwCvdBM8l6kQH6339hiiAp4ekBkGORikLUkNeXhUk3iStU6NxKmMb68KdnOQ0yI000vrg==",
+      "poolName": "customActivity",
+      "batchUri": "https://batchservicename.batch.azure.com",
+      "linkedServiceName": "AzureStorageLinkedService1"
+    }
+  }
+}

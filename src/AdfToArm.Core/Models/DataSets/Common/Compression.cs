@@ -27,6 +27,5 @@ namespace AdfToArm.Core.Models.DataSets.Common
         /// </summary>
         [JsonProperty("level", Required = Required.Always)]
         public CompressionLevel Level { get; set; }
-
     }
 }

@@ -1,0 +1,21 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "DataLakeAnalyticsUSQL1",
+        "type": "DataLakeAnalyticsU-SQL",
+        "outputs": 
+        [
+          {
+            "name": "EventsByRegionTable"
+          }
+        ],
+        "typeProperties": {
+          "script": "SCRIPT SCRIPT SCRIPT"
+        },
+        "linkedServiceName": "AzureDataLakeAnalyticsLinkedService"
+      }
+    ]
+  }
+}

@@ -29,6 +29,20 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties.CopyActivity.Sinks
         public TimeSpan? WriteBatchTimeout { get; set; }
 
         /// <summary>
+        /// Specify a query for Copy Activity to execute such that data of a specific slice is cleaned up.
+        /// </summary>
+        [ArmParameter]
+        [JsonProperty("sqlWriterCleanupScript", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public string SqlWriterCleanupScript { get; set; }
+
+        /// <summary>
+        /// Specify a column name for Copy Activity to fill with auto generated slice identifier, which is used to clean up data of a specific slice when rerun. 
+        /// </summary>
+        [ArmParameter]
+        [JsonProperty("sliceIdentifierColumnName", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public string SliceIdentifierColumnName { get; set; }
+
+        /// <summary>
         /// Name of the stored procedure that upserts (updates/inserts) data into the target table.
         /// </summary>
         [ArmParameter]
@@ -44,25 +58,12 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties.CopyActivity.Sinks
         public object StoredProcedureParameters { get; set; }
 
         /// <summary>
-        /// Specify a table type name to be used in the stored procedure. Copy activity makes the data being moved available in a temp table with this table type. 
+        /// Specify a table type name to be used in the stored procedure. 
+        /// Copy activity makes the data being moved available in a temp table with this table type. 
         /// Stored procedure code can then merge the data being copied with existing data.
-        /// <example>
-        /// "storedProcedureParameters": {
-        ///                 "identifier": { "value": "1", "type": "Int" },
-        ///                 "stringData": { "value": "str1" }
-        ///             }
-        /// </example>
         /// </summary>
         [ArmParameter]
         [JsonProperty("sqlWriterTableType", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string SqlWriterTableType { get; set; }
-
-        /// <summary>
-        /// Specify a SQL query for Copy Activity to execute before writing data into Azure SQL Database in each run. 
-        /// You can use this property to clean up the pre-loaded data.
-        /// </summary>
-        [ArmParameter]
-        [JsonProperty("preCopyScript", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-        public string PreCopyScript { get; set; }
     }
 }

@@ -1,0 +1,19 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "SqlStoredProcedureActivity1",
+        "type": "SqlServerStoredProcedure",
+        "outputs": [
+          {
+            "name": "BlobOutput1"
+          }
+        ],
+        "typeProperties": {
+          "storedProcedureName": "[dbo].[ProcedureName]"
+        }
+      }
+    ]
+  }
+}

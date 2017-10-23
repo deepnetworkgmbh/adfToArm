@@ -1,0 +1,36 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "HDInsightSparkActivity1",
+        "type": "HDInsightSpark",
+        "inputs": 
+        [
+          {
+            "name": "hdisamplein"
+          }
+        ],
+        "outputs": 
+        [
+          {
+            "name": "hdisampleout"
+          }
+        ],
+        "typeProperties": {
+          "rootPath": "adfspark\\pyFiles",
+          "entryFilePath": "test.py",
+          "className": "Class1",
+          "arguments": [ "arg1", "arg2" ],
+          "proxyUser": "proxyUser",
+          "sparkConfig": {
+            "spark.python.worker.memory": "512m"
+          },
+          "getDebugInfo": "Always",
+          "sparkJobLinkedService": "sparkJobLinkedService"
+        },
+        "linkedServiceName": "HDInsightLinkedService"
+      }
+    ]
+  }
+}

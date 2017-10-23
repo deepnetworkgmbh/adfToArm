@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 
 namespace AdfToArm.Core.Models.Pipelines.ActivityProperties.CopyActivity.Sinks
 {
@@ -20,5 +21,25 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties.CopyActivity.Sinks
         /// </summary>
         [JsonProperty("copyBehavior", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public CopyBehavior? CopyBehavior { get; set; }
+
+        /// <summary>
+        /// Specifies whether to add a header of column definitions while writing to an output dataset.
+        /// 
+        /// BlobSink supports the property for backward compatibility.
+        /// </summary>
+        [JsonProperty("blobWriterAddHeader", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public bool? BlobWriterAddHeader { get; set; }
+
+        /// <summary>
+        /// Writes data into the Blob when the writeBatchSize or writeBatchTimeout is hit.
+        /// </summary>
+        [JsonProperty("writeBatchSize", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public int? WriteBatchSize { get; set; }
+
+        /// <summary>
+        /// Writes data into the Blob when the writeBatchSize or writeBatchTimeout is hit.
+        /// </summary>
+        [JsonProperty("writeBatchTimeout", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public TimeSpan? WriteBatchTimeout { get; set; }
     }
 }

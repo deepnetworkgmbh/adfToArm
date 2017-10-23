@@ -50,7 +50,7 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties
         /// Choose to stage the interim data in aa blob storage instead of directly copy data from source to sink.
         /// </summary>
         [JsonProperty("stagingSettings", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-        public object StagingSettings { get; set; }
+        public StagingSettings StagingSettings { get; set; }
 
         /// <summary>
         /// Choose how to handle incompatible rows when copying data from source to sink.
@@ -62,6 +62,6 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties
         /// Choose how to handle incompatible rows when copying data from source to sink.
         /// </summary>
         [JsonProperty("redirectIncompatibleRowSettings", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-        public object RedirectIncompatibleRowSettings { get; set; }
+        public RedirectIncompatibleRowSettings RedirectIncompatibleRowSettings { get; set; }
     }
 }

@@ -1,0 +1,33 @@
+{
+  "name": "CopyFromBlobToDataLakePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyFromBlobToDataLake",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureBlobSource"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureDataLakeStoreSink"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource",
+            "recursive": true,
+            "treatEmptyAsNull": true,
+            "SkipHeaderLineCount": 1
+          },
+          "sink": {
+            "type": "AzureDataLakeStoreSink",
+            "copyBehavior": "MergeFiles"
+          }
+        }
+      }
+    ]
+  }
+}

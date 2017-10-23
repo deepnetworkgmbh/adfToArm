@@ -1,0 +1,14 @@
+{
+  "name": "AzureSqlTable1",
+  "properties": {
+    "type": "AzureSqlTable",
+    "linkedServiceName": "AzureSqlTableLinkedService1",
+    "typeProperties": {
+      "tableName": "dbo.Table"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    }
+  }
+}

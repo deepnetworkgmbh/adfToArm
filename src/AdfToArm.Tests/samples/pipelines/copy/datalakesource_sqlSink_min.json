@@ -1,0 +1,29 @@
+{
+  "name": "CopyFromDataLakeToSqlPipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyFromDataLakeToSql",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureDataLakeStoreSource1"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureSqlTableLocation1"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "AzureDataLakeStoreSource"
+          },
+          "sink": {
+            "type": "SqlSink"
+          }
+        }
+      }
+    ]
+  }
+}

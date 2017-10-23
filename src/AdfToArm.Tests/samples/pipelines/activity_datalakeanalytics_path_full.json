@@ -1,0 +1,36 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "DataLakeAnalyticsUSQL1",
+        "type": "DataLakeAnalyticsU-SQL",
+        "inputs": 
+        [
+          {
+            "name": "DataLakeTable"
+          }
+        ],
+        "outputs": 
+        [
+          {
+            "name": "EventsByRegionTable"
+          }
+        ],
+        "typeProperties": {
+          "scriptPath": "scripts\\kona\\SearchLogProcessing.txt",
+          "scriptLinkedService": "StorageLinkedService",
+          "degreeOfParallelism": 3,
+          "priority": 100,
+          "parameters": {
+            "in": "/datalake/input/SearchLog.tsv",
+            "out": "/datalake/output/Result.tsv"
+          },
+          "runtimeVersion": "1.1",
+          "compilationMode": "Full"
+        },
+        "linkedServiceName": "AzureDataLakeAnalyticsLinkedService"
+      }
+    ]
+  }
+}

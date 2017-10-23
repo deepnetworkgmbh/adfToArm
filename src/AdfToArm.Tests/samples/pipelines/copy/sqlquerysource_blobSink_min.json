@@ -1,0 +1,30 @@
+{
+  "name": "CopyFromSqlToStorage",
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyFromSqlToStorage",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureSqlTableLocation1"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureBlobLocation1"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "SqlSource",
+            "sqlReaderQuery": "select * from [dbo].[Table1]"
+          },
+          "sink": {
+            "type": "BlobSink"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "AzureBlob1",
+  "properties": {
+    "type": "AzureBlob",
+    "published": false,
+    "external": true,
+    "linkedServiceName": "AzureStorageLinkedService1",
+    "structure": [
+      {
+        "name": "prop1", "type": "String", "culture": "uk-UA"
+      },
+      {
+        "name": "prop2", "type": "DateTime", "culture": "tr-TR", "format": "MMMM dd, yyyy"
+      },
+      {
+        "name": "prop3", "type": "TimeSpan", "culture": "en-US", "format": "H:mm:ss"
+      }
+    ],
+    "typeProperties": {
+      "folderPath": "blob\folder"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1,
+      "style": "StartOfInterval",
+      "anchorDateTime": "01/01/0001",
+      "offset": "00:00:00.000"
+    },
+    "policy": {     
+      "validation": {
+        "minimumSizeMB": 123,
+        "minimumRows": 10
+      },
+      "externalData":{
+        "dataDelay": 10,
+        "retryInterval": "00:10:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
+      }
+    }
+  }
+}

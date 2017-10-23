@@ -1,0 +1,12 @@
+﻿{
+  "name": "AzureDataLakeAnalyticsLinkedService",
+  "properties": {
+    "type": "AzureDataLakeAnalytics",
+    "typeProperties": {
+      "accountName": "<account name>",
+      "servicePrincipalId": "<service principal id>",
+      "servicePrincipalKey": "<service principal key>",
+      "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+    }
+  }
+}

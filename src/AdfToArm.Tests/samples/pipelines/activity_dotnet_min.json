@@ -1,0 +1,24 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "DotNetActivity2",
+        "type": "DotNetActivity",
+        "outputs": 
+        [
+          {
+            "name": "hdisampleout"
+          }
+        ],
+        "typeProperties": {
+          "AssemblyName": "dotnetassembly.dll",
+          "EntryPoint": "MyDotNetActivityNS.MyDotNetActivity",
+          "PackageLinkedService": "AzureStorageLinkedService",
+          "PackageFile": "customactivitycontainer/MyDotNetActivity.zip"
+        },
+        "linkedServiceName": "AzureBatchLinkedService"
+      }
+    ]
+  }
+}

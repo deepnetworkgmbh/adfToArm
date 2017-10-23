@@ -17,5 +17,21 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties.CopyActivity.Sources
         /// </summary>
         [JsonProperty("recursive", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public bool? Recursive { get; set; }
+
+        /// <summary>
+        /// Specifies whether to treat null or empty string as null value.
+        /// 
+        /// BlobSource supports the property for backward compatibility.
+        /// </summary>
+        [JsonProperty("treatEmptyAsNull", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public bool? TreatEmptyAsNull { get; set; }
+
+        /// <summary>
+        /// Specifies how many lines need be skipped. It is applicable only when input dataset is using TextFormat.
+        /// 
+        /// BlobSource supports the property for backward compatibility.
+        /// </summary>
+        [JsonProperty("skipHeaderLineCount", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public int? SkipHeaderLineCount { get; set; }
     }
 }

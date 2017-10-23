@@ -1,0 +1,49 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "description": "The simplest pipeline",
+    "activities": [
+      {
+        "name": "SqlStoredProcedureActivity1",
+        "description": "Call stored procedure",
+        "type": "SqlServerStoredProcedure",
+        "inputs": [
+          {
+            "name": "FakeInput"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "BlobOutput1"
+          }
+        ],
+        "linkedServiceName": "FakeLinkedService",
+        "typeProperties": {
+          "storedProcedureName": "[dbo].[ProcedureName]"
+        },
+        "policy": {
+          "concurrency": 2,
+          "executionPriorityOrder": "NewestFirst",
+          "retry": 3,
+          "timeout": "00:03:00",
+          "delay": "00:01:00",
+          "longRetry": 3,
+          "longRetryInterval": "00:10:00"      
+        },
+        "scheduler": {
+          "frequency": "Hour",
+          "interval": 1,
+          "style": "EndOfInterval",
+          "anchorDateTime": "01/01/0001",
+          "offset": "00:00:00.000"
+        }
+      }
+    ],
+    "start": "2017-10-23T00:00:00Z",
+    "end": "2099-12-30T00:00:00Z",
+    "isPaused": false,
+    "pipelineMode": "OneTime",
+    "expirationTime": "3.00:00:00.000"
+  },
+  "$schema": "http://datafactories.schema.management.azure.com/internalschemas/2015-09-01/Microsoft.DataFactory.Pipeline.json"
+}

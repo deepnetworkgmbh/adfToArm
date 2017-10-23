@@ -30,7 +30,7 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties
         /// <summary>
         /// A list of command-line arguments to the Spark program.
         /// </summary>
-        [ArmParameter]
+        [ArmParameter("array")]
         [JsonProperty("arguments", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string[] Arguments { get; set; }
 
@@ -44,9 +44,9 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties
         /// <summary>
         /// Spark configuration properties.
         /// </summary>
-        [ArmParameter]
+        [ArmParameter("object")]
         [JsonProperty("sparkConfig", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-        public string SparkConfig { get; set; }
+        public object SparkConfig { get; set; }
 
         /// <summary>
         /// Specifies when the Spark log files are copied to the Azure storage used by HDInsight cluster (or) specified by sparkJobLinkedService. 

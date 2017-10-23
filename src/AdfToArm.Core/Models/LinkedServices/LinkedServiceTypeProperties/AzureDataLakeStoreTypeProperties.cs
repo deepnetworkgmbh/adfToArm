@@ -2,6 +2,7 @@
 
 namespace AdfToArm.Core.Models.LinkedServices.LinkedServiceTypeProperties
 {
+    // TODO: Validate that User and Service Authentication can't be used together; that SubscriptionId and ResourceGroupName exists for usage in sink
     [JsonObject]
     public class AzureDataLakeStoreTypeProperties : ILinkedServiceProperties
     {
