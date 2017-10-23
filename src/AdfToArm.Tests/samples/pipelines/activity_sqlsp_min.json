@@ -1,0 +1,20 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "SqlServerStoredProcedureActivity2",
+        "type": "SqlServerStoredProcedure",
+        "outputs": 
+        [
+          {
+            "name": "sprocsampleout"
+          }
+        ],
+        "typeProperties": {
+          "storedProcedureName": "sp_sample"
+        }
+      }
+    ]
+  }
+}

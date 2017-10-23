@@ -1,0 +1,30 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "SqlServerStoredProcedureActivity1",
+        "type": "SqlServerStoredProcedure",
+        "inputs": 
+        [
+          {
+            "name": "sprocsamplein"
+          }
+        ],
+        "outputs": 
+        [
+          {
+            "name": "sprocsampleout"
+          }
+        ],
+        "typeProperties": {
+          "storedProcedureName": "sp_sample",
+          "storedProcedureParameters": {
+            "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
+            "TextParam": "value",
+          }
+        }
+      }
+    ]
+  }
+}

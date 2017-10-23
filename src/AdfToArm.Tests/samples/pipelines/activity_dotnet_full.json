@@ -1,0 +1,33 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "DotNetActivity1",
+        "type": "DotNetActivity",
+        "inputs": 
+        [
+          {
+            "name": "hdisamplein"
+          }
+        ],
+        "outputs": 
+        [
+          {
+            "name": "hdisampleout"
+          }
+        ],
+        "typeProperties": {
+          "AssemblyName": "dotnetassembly.dll",
+          "EntryPoint": "MyDotNetActivityNS.MyDotNetActivity",
+          "PackageLinkedService": "AzureStorageLinkedService",
+          "PackageFile": "customactivitycontainer/MyDotNetActivity.zip",
+          "extendedProperties": {
+            "SliceStart": "$$Text.Format('{0:yyyyMMddHH-mm}', Time.AddMinutes(SliceStart, 0))"
+          }
+        },
+        "linkedServiceName": "AzureBatchLinkedService"
+      }
+    ]
+  }
+}
