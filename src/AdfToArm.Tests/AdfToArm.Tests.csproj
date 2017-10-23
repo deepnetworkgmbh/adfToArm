@@ -7,15 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="samples\datasets\azure_blob_full.json" />
-    <None Remove="samples\datasets\azure_blob_min.json" />
-    <None Remove="samples\datasets\azure_datalake_full.json" />
-    <None Remove="samples\datasets\azure_datalake_min.json" />
-    <None Remove="samples\datasets\azure_sql.json" />
-    <None Remove="samples\datasets\dataset_full.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="samples\datasets\azure_blob_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

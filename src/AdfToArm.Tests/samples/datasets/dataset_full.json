@@ -13,7 +13,7 @@
         "name": "prop2", "type": "DateTime", "culture": "tr-TR", "format": "MMMM dd, yyyy"
       },
       {
-        "name": "prop3", "type": "DateTimeOffset", "culture": "en-US", "format": "H:mm:ss"
+        "name": "prop3", "type": "TimeSpan", "culture": "en-US", "format": "H:mm:ss"
       }
     ],
     "typeProperties": {

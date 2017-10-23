@@ -77,14 +77,6 @@ namespace AdfToArm.Tests.Dataset
             availability.Style.ShouldNotBeNull();
             availability.AnchorDateTime.ShouldNotBeNull();
             availability.Offset.ShouldNotBeNull();
-
-            var policy = dataset.Properties.Policy.ShouldBeAssignableTo<Policy>();
-            policy.Validation.MinimumSizeMB.ShouldNotBeNull();
-            policy.Validation.MinimumRows.ShouldNotBeNull();
-            policy.External.DataDelay.ShouldNotBeNull();
-            policy.External.RetryInterval.ShouldNotBeNull();
-            policy.External.RetryTimeout.ShouldNotBeNull();
-            policy.External.MaximumRetry.ShouldNotBeNull();
         }
 
         [TestMethod]
