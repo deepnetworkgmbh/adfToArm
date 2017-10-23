@@ -1,0 +1,22 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "DataLakeAnalyticsUSQL1",
+        "type": "DataLakeAnalyticsU-SQL",
+        "outputs": 
+        [
+          {
+            "name": "EventsByRegionTable"
+          }
+        ],
+        "typeProperties": {
+          "scriptPath": "scripts\\kona\\SearchLogProcessing.txt",
+          "scriptLinkedService": "StorageLinkedService"
+        },
+        "linkedServiceName": "AzureDataLakeAnalyticsLinkedService"
+      }
+    ]
+  }
+}

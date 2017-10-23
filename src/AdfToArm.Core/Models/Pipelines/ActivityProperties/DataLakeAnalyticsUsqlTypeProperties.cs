@@ -55,5 +55,24 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties
         [JsonConverter(typeof(PairConverter))]
         [JsonProperty("parameters", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public KeyValuePair<string, string>[] Parameters { get; set; }
+
+        /// <summary>
+        /// Runtime version of the U-SQL engine to use
+        /// </summary>
+        [ArmParameter]
+        [JsonProperty("runtimeVersion", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public string RuntimeVersion { get; set; }
+
+        /// <summary>
+        /// Compilation mode of U-SQL. Must be one of these values:
+        /// * Semantic: Only perform semantic checks and necessary sanity checks.
+        /// * Full: Perform the full compilation, including syntax check, optimization, code generation, etc.
+        /// * SingleBox: Perform the full compilation, with TargetType setting to SingleBox.
+        /// 
+        /// If you don't specify a value for this property, the server determines the optimal compilation mode.
+        /// </summary>
+        [ArmParameter]
+        [JsonProperty("compilationMode", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public string CompilationMode { get; set; }
     }
 }

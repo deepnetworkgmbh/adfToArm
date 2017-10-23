@@ -73,6 +73,18 @@
     <Content Include="samples\linkedservices\hdinsight_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="samples\pipelines\activity_datalakeanalytics_path_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\activity_datalakeanalytics_path_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\activity_datalakeanalytics_script_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\activity_datalakeanalytics_script_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\pipelines\pipeline_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
