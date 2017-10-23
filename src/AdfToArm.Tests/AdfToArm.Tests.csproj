@@ -73,6 +73,12 @@
     <Content Include="samples\linkedservices\hdinsight_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="samples\pipelines\pipeline_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\pipeline_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -83,12 +89,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pipeline\" />
-    <Folder Include="samples\pipelines\" />
+    <ProjectReference Include="..\AdfToArm.Core\AdfToArm.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdfToArm.Core\AdfToArm.Core.csproj" />
+    <Folder Include="Pipeline\Copy\" />
   </ItemGroup>
 
 </Project>
