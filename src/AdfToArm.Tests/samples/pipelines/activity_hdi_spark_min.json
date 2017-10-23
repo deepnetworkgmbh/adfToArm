@@ -1,0 +1,22 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "HDInsightSparkActivity2",
+        "type": "HDInsightSpark",
+        "outputs": 
+        [
+          {
+            "name": "hdisampleout"
+          }
+        ],
+        "typeProperties": {
+          "rootPath": "adfspark\\pyFiles",
+          "entryFilePath": "test.py"
+        },
+        "linkedServiceName": "HDInsightLinkedService"
+      }
+    ]
+  }
+}
