@@ -1,0 +1,46 @@
+{
+  "name": "GeneralCopyPipelineSample",
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyFromBlobToDataLake",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureBlobSource"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureDataLakeStoreSink"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "AzureDataLakeStoreSink"
+          },
+          "translator":{
+            "type": "TabularTranslator",
+            "columnMappings": "Id: ID, FirstName: FirstName, LastName: LastName"
+          },
+          "cloudDataMovementUnits": 2,
+          "parallelCopies": 4,
+          "enableStaging": true,
+          "stagingSettings":{
+            "linkedServiceName": "MyStagingBlob",
+            "path": "stagingcontainer/path",
+            "enableCompression": true
+          },
+          "enableSkipIncompatibleRow": true,           
+          "redirectIncompatibleRowSettings": {
+            "linkedServiceName": "BlobStorage",
+            "path": "redirectcontainer/erroroutput"
+          }
+        }
+      }
+    ]
+  }
+}

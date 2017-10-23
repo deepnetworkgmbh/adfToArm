@@ -103,6 +103,27 @@
     <Content Include="samples\pipelines\activity_sqlsp_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="samples\pipelines\copy\blobSource_dataLakeSink_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\blobSource_dataLakeSink_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\datalakesource_sqlSink_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\datalakesource_sqlSink_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\general.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\sqlprocsource_blobSink_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\sqlquerysource_blobSink_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\pipelines\pipeline_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -120,10 +141,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdfToArm.Core\AdfToArm.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pipeline\Copy\" />
   </ItemGroup>
 
 </Project>

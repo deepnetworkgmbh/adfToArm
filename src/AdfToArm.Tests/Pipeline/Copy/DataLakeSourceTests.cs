@@ -2,16 +2,17 @@
 using AdfToArm.Core.Models;
 using AdfToArm.Core.Models.Pipelines;
 using AdfToArm.Core.Models.Pipelines.ActivityProperties;
+using AdfToArm.Core.Models.Pipelines.ActivityProperties.CopyActivity.Sources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 
 namespace AdfToArm.Tests.Dataset
 {
     [TestClass]
-    public class SqlServerStoredProcedureTests
+    public class DataLakeSourceTests
     {
-        private const string FullFilePath = @"./samples/pipelines/activity_sqlsp_full.json";
-        private const string MinFilePath = @"./samples/pipelines/activity_sqlsp_min.json";
+        private const string FullFilePath = @"./samples/pipelines/copy/datalakesource_sqlSink_full.json";
+        private const string MinFilePath = @"./samples/pipelines/copy/datalakesource_sqlSink_min.json";
 
         [TestMethod]
         public void AdfItemType_ShouldBe_Pipeline()
@@ -25,6 +26,19 @@ namespace AdfToArm.Tests.Dataset
         }
 
         [TestMethod]
+        public void AdfActivityType_ShouldBe_CopyTypeProperties()
+        {
+            // Arrange
+            // Act
+            var result = AdfSerializer.Deserialize(FullFilePath);
+            var activity = (result.value as Pipeline).Properties.Activities[0];
+
+            // Assert
+            activity.Type.ShouldBe(ActivityType.Copy);
+            activity.TypeProperties.ShouldBeAssignableTo<CopyTypeProperties>();
+        }
+
+        [TestMethod]
         public void AdfSerializer_ShouldParse_AllProperties()
         {
             // Arrange
@@ -34,20 +48,14 @@ namespace AdfToArm.Tests.Dataset
 
             // Assert
             activity.Name.ShouldNotBeNullOrWhiteSpace();
-            activity.Type.ShouldBe(ActivityType.SqlServerStoredProcedure);
             activity.Inputs.ShouldNotBeEmpty();
             activity.Outputs.ShouldNotBeEmpty();
             activity.LinkedServiceName.ShouldBeNullOrWhiteSpace();
 
-            var props = activity.TypeProperties.ShouldBeAssignableTo<SqlServerStoredProcedureTypeProperties>();
-            props.StoredProcedureName.ShouldNotBeNullOrWhiteSpace();
-            props.StoredProcedureParameters.ShouldNotBeEmpty();
-
-            foreach (var param in props.StoredProcedureParameters)
-            {
-                param.Key.ShouldNotBeNullOrWhiteSpace();
-                param.Value.ShouldNotBeNullOrWhiteSpace();
-            }
+            var props = activity.TypeProperties.ShouldBeAssignableTo<CopyTypeProperties>();
+            var source = props.Source.ShouldBeAssignableTo<CopySourceDataLake>();
+            source.Type.ShouldBe(CopySourceType.AzureDataLakeStoreSource);
+            source.Recursive.ShouldNotBeNull();
         }
 
         [TestMethod]
@@ -60,14 +68,14 @@ namespace AdfToArm.Tests.Dataset
 
             // Assert
             activity.Name.ShouldNotBeNullOrWhiteSpace();
-            activity.Type.ShouldBe(ActivityType.SqlServerStoredProcedure);
-            activity.Inputs.ShouldBeNull();
+            activity.Inputs.ShouldNotBeEmpty();
             activity.Outputs.ShouldNotBeEmpty();
             activity.LinkedServiceName.ShouldBeNullOrWhiteSpace();
 
-            var props = activity.TypeProperties.ShouldBeAssignableTo<SqlServerStoredProcedureTypeProperties>();
-            props.StoredProcedureName.ShouldNotBeNullOrWhiteSpace();
-            props.StoredProcedureParameters.ShouldBeNull();
+            var props = activity.TypeProperties.ShouldBeAssignableTo<CopyTypeProperties>();
+            var source = props.Source.ShouldBeAssignableTo<CopySourceDataLake>();
+            source.Type.ShouldBe(CopySourceType.AzureDataLakeStoreSource);
+            source.Recursive.ShouldBeNull();
         }
     }
 }

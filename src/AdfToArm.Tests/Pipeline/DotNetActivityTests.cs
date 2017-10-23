@@ -55,7 +55,7 @@ namespace AdfToArm.Tests.Dataset
         }
 
         [TestMethod]
-        public void AdfSerializer_ShouldParse_MinSetOfPropertiesn()
+        public void AdfSerializer_ShouldParse_MinSetOfProperties()
         {
             // Arrange
             // Act
