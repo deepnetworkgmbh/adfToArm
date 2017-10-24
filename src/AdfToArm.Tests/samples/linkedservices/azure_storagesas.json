@@ -1,0 +1,9 @@
+﻿{
+  "name": "StorageSasLinkedService",
+  "properties": {
+    "type": "AzureStorageSas",
+    "typeProperties": {
+      "sasUri": "<Specify SAS URI of the Azure Storage resource>"  
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{  
+  "name":"SamplePipeline",
+  "properties":{  
+    "activities":[  
+      {
+        "name": "AzureBlobtoSQLDW",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureBlobInput"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureSqlDWOutput"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "SqlDWSink",
+            "sqlWriterCleanupScript": "DELETE FROM Table1 WHERE Prop1 > 0",
+            "allowPolyBase": true,
+            "polyBaseSettings": {
+              "rejectType": "percentage",
+              "rejectValue": 10.0,
+              "rejectSampleValue": 100,
+              "useTypeDefault": true
+            },
+            "writeBatchSize": 5000,
+            "writeBatchTimeout": "00:30:00"
+          }
+        }
+      }
+    ]
+  }
+}

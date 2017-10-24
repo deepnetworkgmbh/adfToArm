@@ -107,6 +107,18 @@ namespace AdfToArm.Core
                     case DataSetType.AzureSqlTable:
                         dataset = jo.ToObject<AzureSqlTable>();
                         break;
+                    case DataSetType.AzureSqlDwTable:
+                        dataset = jo.ToObject<AzureSqlDwTable>();
+                        break;
+                    case DataSetType.CosmosDbCollection:
+                        dataset = jo.ToObject<AzureCosmosDbCollection>();
+                        break;
+                    case DataSetType.AzureTable:
+                        dataset = jo.ToObject<AzureTable>();
+                        break;
+                    case DataSetType.AzureSearchIndex:
+                        dataset = jo.ToObject<AzureSearchIndex>();
+                        break;
                 }
 
                 return (AdfItemType.DataSet, dataset);
@@ -141,11 +153,29 @@ namespace AdfToArm.Core
                     case LinkedServiceType.AzureSqlDatabase:
                         linkedService = jo.ToObject<AzureSqlDatabase>();
                         break;
+                    case LinkedServiceType.AzureSqlDW:
+                        linkedService = jo.ToObject<AzureSqlDW>();
+                        break;
                     case LinkedServiceType.AzureStorage:
                         linkedService = jo.ToObject<AzureStorage>();
                         break;
+                    case LinkedServiceType.AzureStorageSas:
+                        linkedService = jo.ToObject<AzureStorageSas>();
+                        break;
                     case LinkedServiceType.HDInsight:
                         linkedService = jo.ToObject<HDInsight>();
+                        break;
+                    case LinkedServiceType.HDInsightOnDemand:
+                        linkedService = jo.ToObject<HDInsightOnDemand>();
+                        break;
+                    case LinkedServiceType.AzureCosmosDb:
+                        linkedService = jo.ToObject<AzureCosmosDb>();
+                        break;
+                    case LinkedServiceType.AzureSearch:
+                        linkedService = jo.ToObject<AzureSearch>();
+                        break;
+                    case LinkedServiceType.AzureML:
+                        linkedService = jo.ToObject<AzureMachineLearning>();
                         break;
                 }
 

@@ -8,9 +8,9 @@ using Shouldly;
 namespace AdfToArm.Tests.DataSet
 {
     [TestClass]
-    public class AzureSqlTableDatasetTests
+    public class AzureCosmosDbDatasetTests
     {
-        private const string FullFilePath = @"./samples/datasets/azure_sql.json";
+        private const string FullFilePath = @"./samples/datasets/azure_cosmosdb.json";
 
         [TestMethod]
         public void AdfItemType_ShouldBe_DataSet()
@@ -31,7 +31,7 @@ namespace AdfToArm.Tests.DataSet
             var result = AdfSerializer.Deserialize(FullFilePath);
 
             // Assert
-            result.value.ShouldBeAssignableTo<AzureSqlTable>();
+            result.value.ShouldBeAssignableTo<AzureCosmosDbCollection>();
         }
 
         [TestMethod]
@@ -40,14 +40,14 @@ namespace AdfToArm.Tests.DataSet
             // Arrange
             // Act
             var result = AdfSerializer.Deserialize(FullFilePath);
-            var dataset = result.value as AzureSqlTable;
+            var dataset = result.value as AzureCosmosDbCollection;
 
             // Assert
             dataset.Name.ShouldNotBeNullOrWhiteSpace();
-            dataset.Properties.Type.ShouldBe(DataSetType.AzureSqlTable);
+            dataset.Properties.Type.ShouldBe(DataSetType.CosmosDbCollection);
 
-            var props = dataset.Properties.TypeProperties.ShouldBeAssignableTo<AzureSqlTableTypeProperties>();
-            props.TableName.ShouldNotBeNullOrWhiteSpace();
+            var props = dataset.Properties.TypeProperties.ShouldBeAssignableTo<AzureCosmosDbCollectionTypeProperties>();
+            props.CollectionName.ShouldNotBeNullOrWhiteSpace();
         }
     }
 }

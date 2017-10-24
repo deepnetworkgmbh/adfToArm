@@ -1,0 +1,14 @@
+{
+  "name": "AzureSearchIndex1",
+  "properties": {
+    "type": "AzureSearchIndex",
+    "linkedServiceName": "AzureSearchIndexLinkedService1",
+    "typeProperties": {
+      "indexName": "products"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    }
+  }
+}

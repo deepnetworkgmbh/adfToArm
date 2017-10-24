@@ -1,0 +1,37 @@
+{
+  "name": "CopyFromCosmosToTablePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyFromCosmosToTable",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "CosmosDbLocation1"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureTableLocation1"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "DocumentDbCollectionSource",
+            "query": "SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"",
+            "nestingSeparator": "."
+          },
+          "sink": {
+            "type": "AzureTableSink",
+            "azureTableDefaultPartitionKeyValue": "0000",
+            "azureTablePartitionKeyName": "PartitionKey",
+            "azureTableRowKeyName": "ColumnName",
+            "azureTableInsertType": "replace",
+            "writeBatchSize": 10,
+            "writeBatchTimeout": "00:30:00"
+          }
+        }
+      }
+    ]
+  }
+}

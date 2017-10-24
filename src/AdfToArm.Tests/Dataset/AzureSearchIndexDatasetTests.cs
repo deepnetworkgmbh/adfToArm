@@ -8,9 +8,9 @@ using Shouldly;
 namespace AdfToArm.Tests.DataSet
 {
     [TestClass]
-    public class AzureSqlTableDatasetTests
+    public class AzureSearchIndexDatasetTests
     {
-        private const string FullFilePath = @"./samples/datasets/azure_sql.json";
+        private const string FullFilePath = @"./samples/datasets/azure_searchindex.json";
 
         [TestMethod]
         public void AdfItemType_ShouldBe_DataSet()
@@ -24,14 +24,14 @@ namespace AdfToArm.Tests.DataSet
         }
 
         [TestMethod]
-        public void DataSetType_ShouldBe_AzureSqlTable()
+        public void DataSetType_ShouldBe_AzureSearchIndex()
         {
             // Arrange
             // Act
             var result = AdfSerializer.Deserialize(FullFilePath);
 
             // Assert
-            result.value.ShouldBeAssignableTo<AzureSqlTable>();
+            result.value.ShouldBeAssignableTo<AzureSearchIndex>();
         }
 
         [TestMethod]
@@ -40,14 +40,14 @@ namespace AdfToArm.Tests.DataSet
             // Arrange
             // Act
             var result = AdfSerializer.Deserialize(FullFilePath);
-            var dataset = result.value as AzureSqlTable;
+            var dataset = result.value as AzureSearchIndex;
 
             // Assert
             dataset.Name.ShouldNotBeNullOrWhiteSpace();
-            dataset.Properties.Type.ShouldBe(DataSetType.AzureSqlTable);
+            dataset.Properties.Type.ShouldBe(DataSetType.AzureSearchIndex);
 
-            var props = dataset.Properties.TypeProperties.ShouldBeAssignableTo<AzureSqlTableTypeProperties>();
-            props.TableName.ShouldNotBeNullOrWhiteSpace();
+            var props = dataset.Properties.TypeProperties.ShouldBeAssignableTo<AzureSearchIndexTypeProperties>();
+            props.IndexName.ShouldNotBeNullOrWhiteSpace();
         }
     }
 }

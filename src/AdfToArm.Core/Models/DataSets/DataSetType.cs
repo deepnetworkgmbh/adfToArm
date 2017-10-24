@@ -8,7 +8,15 @@ namespace AdfToArm.Core.Models.DataSets
         AzureBlob,
         [EnumMember(Value = "AzureSqlTable")]
         AzureSqlTable,
+        [EnumMember(Value = "AzureSqlDWTable")]
+        AzureSqlDwTable,
         [EnumMember(Value = "AzureDataLakeStore")]
-        AzureDataLakeStore
+        AzureDataLakeStore,
+        [EnumMember(Value = "DocumentDbCollection")]
+        CosmosDbCollection,
+        [EnumMember(Value = "AzureTable")]
+        AzureTable,
+        [EnumMember(Value = "AzureSearchIndex")]
+        AzureSearchIndex
     }
 }

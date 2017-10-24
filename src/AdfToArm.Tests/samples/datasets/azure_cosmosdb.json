@@ -1,0 +1,15 @@
+{
+  "name": "PersonCosmosDbTable",
+  "properties": {
+    "type": "DocumentDbCollection",
+    "linkedServiceName": "CosmosDbLinkedService",
+    "typeProperties": {
+      "collectionName": "Person"
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    }
+  }
+}

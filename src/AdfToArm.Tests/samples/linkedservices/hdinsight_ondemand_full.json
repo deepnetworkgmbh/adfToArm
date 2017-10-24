@@ -1,0 +1,46 @@
+﻿{
+  "name": "HDInsightOnDemandLinkedService",
+  "properties": {
+    "type": "HDInsightOnDemand",
+    "typeProperties": {
+      "clusterSize": 1,
+      "timeToLive": "00:05:00",
+      "version": "3.5",
+      "linkedServiceName": "AzureStorageLinkedService",
+      "additionalLinkedServiceNames": [
+        "otherLinkedServiceName1",
+        "otherLinkedServiceName2"
+      ],
+      "osType": "Linux",
+      "hcatalogLinkedServiceName": "AzureSqlLinkedService",
+      "coreConfiguration": {
+        "templeton.mapper.memory.mb": "5000"
+      },
+      "hBaseConfiguration":{
+      },
+      "hdfsConfiguration":{
+      },
+      "hiveConfiguration": {
+        "templeton.mapper.memory.mb": "5000"
+      },
+      "mapReduceConfiguration": {
+        "mapreduce.reduce.java.opts": "-Xmx4000m",
+        "mapreduce.map.java.opts": "-Xmx4000m",
+        "mapreduce.map.memory.mb": "5000",
+        "mapreduce.reduce.memory.mb": "5000",
+        "mapreduce.job.reduce.slowstart.completedmaps": "0.8"
+      },
+      "oozieConfiguration":{
+      },
+      "stormConfiguration":{
+      },
+      "yarnConfiguration": {
+        "yarn.app.mapreduce.am.resource.mb": "5000",
+        "mapreduce.map.memory.mb": "5000"
+      },
+      "headNodeSize": "Standard_D4",
+      "dataNodeSize": "Standard_D4",
+      "zookeeperNodeSize": "Standard_D4"
+    }
+  }
+}

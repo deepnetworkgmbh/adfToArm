@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="samples\datasets\azure_cosmosdb.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\datasets\azure_blob_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -19,7 +22,16 @@
     <Content Include="samples\datasets\azure_datalake_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="samples\datasets\azure_searchindex.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\datasets\azure_sql.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\datasets\azure_sqldw.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\datasets\azure_table.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\datasets\dataset_full.json">
@@ -29,6 +41,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\linkedservices\azure_batch_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\linkedservices\azure_cosmosdb.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\linkedservices\azure_datalakeanalytics_service_full.json">
@@ -55,10 +70,22 @@
     <Content Include="samples\linkedservices\azure_datalakestore_user_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="samples\linkedservices\azure_ml.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\linkedservices\azure_search.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\linkedservices\azure_sqldw.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\linkedservices\azure_sql_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\linkedservices\azure_sql_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\linkedservices\azure_storagesas.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\linkedservices\azure_storage_full.json">
@@ -71,6 +98,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\linkedservices\hdinsight_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\linkedservices\hdinsight_ondemand_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\linkedservices\hdinsight_ondemand_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\pipelines\activity_datalakeanalytics_path_full.json">
@@ -109,6 +142,18 @@
     <Content Include="samples\pipelines\copy\blobSource_dataLakeSink_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="samples\pipelines\copy\blobSource_sqldwSink_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\blobSource_sqldwSink_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\cosmosSource_tableSink_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\cosmosSource_tableSink_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\pipelines\copy\datalakesource_sqlSink_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -118,10 +163,22 @@
     <Content Include="samples\pipelines\copy\general.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="samples\pipelines\copy\sqldwprocSource_searchIndexSink_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\sqldwquerySource_searchIndexSink_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\pipelines\copy\sqlprocsource_blobSink_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\pipelines\copy\sqlquerysource_blobSink_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\tablesource_cosmosSink_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\tablesource_cosmosSink_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\pipelines\pipeline_full.json">

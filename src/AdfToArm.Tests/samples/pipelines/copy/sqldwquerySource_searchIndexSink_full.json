@@ -1,0 +1,34 @@
+{
+  "name": "CopyFromSqlDwToSearchIndesPipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyFromSqlDwToSearchIndes",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureSqlDwTableLocation1"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureSearchIndexLocation1"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "SqlDWSource",
+            "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
+
+          },
+          "sink": {
+            "type": "AzureSearchIndexSink",
+            "WriteBehavior": "Upload",
+            "WriteBatchSize": 500
+          },
+          "executionLocation": "West US"
+        }
+      }
+    ]
+  }
+}
