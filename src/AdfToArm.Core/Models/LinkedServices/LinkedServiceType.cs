@@ -8,6 +8,8 @@ namespace AdfToArm.Core.Models.LinkedServices
         AzureSqlDatabase,
         [EnumMember(Value = "AzureStorage")]
         AzureStorage,
+        [EnumMember(Value = "AzureStorageSas")]
+        AzureStorageSas,
         [EnumMember(Value = "HDInsight")]
         HDInsight,
         [EnumMember(Value = "AzureDataLakeAnalytics")]
@@ -15,6 +17,8 @@ namespace AdfToArm.Core.Models.LinkedServices
         [EnumMember(Value = "AzureDataLakeStore")]
         AzureDataLakeStore,
         [EnumMember(Value = "AzureBatch")]
-        AzureBatch
+        AzureBatch,
+        [EnumMember(Value = "DocumentDb")]
+        AzureCosmosDb
     }
 }

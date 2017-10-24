@@ -31,6 +31,10 @@ namespace AdfToArm.Core.Models.Pipelines
                         return token.ToObject<CopySinkBlob>();
                     case CopySinkType.SqlSink:
                         return token.ToObject<CopySinkAzureSql>();
+                    case CopySinkType.AzureTableSink:
+                        return token.ToObject<CopySinkAzureTable>();
+                    case CopySinkType.CosmosDbCollectionSink:
+                        return token.ToObject<CopySinkAzureCosmosCollection>();
                 }
             }
             catch (JsonSerializationException ex)

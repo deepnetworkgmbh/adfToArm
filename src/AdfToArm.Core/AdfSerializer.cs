@@ -107,6 +107,12 @@ namespace AdfToArm.Core
                     case DataSetType.AzureSqlTable:
                         dataset = jo.ToObject<AzureSqlTable>();
                         break;
+                    case DataSetType.CosmosDbCollection:
+                        dataset = jo.ToObject<AzureCosmosDbCollection>();
+                        break;
+                    case DataSetType.AzureTable:
+                        dataset = jo.ToObject<AzureTable>();
+                        break;
                 }
 
                 return (AdfItemType.DataSet, dataset);
@@ -144,8 +150,14 @@ namespace AdfToArm.Core
                     case LinkedServiceType.AzureStorage:
                         linkedService = jo.ToObject<AzureStorage>();
                         break;
+                    case LinkedServiceType.AzureStorageSas:
+                        linkedService = jo.ToObject<AzureStorageSas>();
+                        break;
                     case LinkedServiceType.HDInsight:
                         linkedService = jo.ToObject<HDInsight>();
+                        break;
+                    case LinkedServiceType.AzureCosmosDb:
+                        linkedService = jo.ToObject<AzureCosmosDb>();
                         break;
                 }
 

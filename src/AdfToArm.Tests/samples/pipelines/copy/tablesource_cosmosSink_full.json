@@ -1,0 +1,34 @@
+{
+  "name": "CopyFromTableToCosmosPipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyFromTableToCosmos",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureTableLocation1"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "CosmosDbLocation1"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "AzureTableSource",
+            "azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00_9999}\\'', SliceStart)",
+            "azureTableSourceIgnoreTableNotFound": true
+          },
+          "sink": {
+            "type": "DocumentDbCollectionSink",
+            "nestingSeparator": ".",
+            "writeBatchSize": 10,
+            "writeBatchTimeout": "00:30:00"
+          }
+        }
+      }
+    ]
+  }
+}

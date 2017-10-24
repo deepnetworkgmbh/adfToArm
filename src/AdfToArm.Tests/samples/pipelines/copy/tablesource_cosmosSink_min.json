@@ -1,0 +1,29 @@
+{
+  "name": "CopyFromTableToCosmosPipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyFromTableToCosmos",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureTableLocation1"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "CosmosDbLocation1"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "AzureTableSource"
+          },
+          "sink": {
+            "type": "DocumentDbCollectionSink"
+          }
+        }
+      }
+    ]
+  }
+}

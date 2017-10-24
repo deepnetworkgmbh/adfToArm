@@ -30,6 +30,10 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties.CopyActivity
                         return token.ToObject<CopySourceBlob>();
                     case CopySourceType.SqlSource:
                         return token.ToObject<CopySourceAzureSql>();
+                    case CopySourceType.AzureTableSource:
+                        return token.ToObject<CopySourceAzureTable>();
+                    case CopySourceType.CosmosDbCollectionSource:
+                        return token.ToObject<CopySourceAzureCosmosCollection>();
                 }
             }
             catch (JsonSerializationException ex)

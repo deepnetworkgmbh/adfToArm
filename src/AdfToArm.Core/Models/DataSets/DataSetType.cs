@@ -9,6 +9,10 @@ namespace AdfToArm.Core.Models.DataSets
         [EnumMember(Value = "AzureSqlTable")]
         AzureSqlTable,
         [EnumMember(Value = "AzureDataLakeStore")]
-        AzureDataLakeStore
+        AzureDataLakeStore,
+        [EnumMember(Value = "DocumentDbCollection")]
+        CosmosDbCollection,
+        [EnumMember(Value = "AzureTable")]
+        AzureTable
     }
 }
