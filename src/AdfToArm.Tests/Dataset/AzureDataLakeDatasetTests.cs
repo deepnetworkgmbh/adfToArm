@@ -47,6 +47,9 @@ namespace AdfToArm.Tests.DataSet
             var dataset = result.value as AzureDataLakeStore;
 
             // Assert
+            dataset.Name.ShouldNotBeNullOrWhiteSpace();
+            dataset.Properties.Type.ShouldBe(DataSetType.AzureDataLakeStore);
+
             var props = dataset.Properties.TypeProperties.ShouldBeAssignableTo<AzureDataLakeStoreTypeProperties>();
             props.FolderPath.ShouldNotBeNullOrWhiteSpace();
             props.FileName.ShouldNotBeNullOrWhiteSpace();

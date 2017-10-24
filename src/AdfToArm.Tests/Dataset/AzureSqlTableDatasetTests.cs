@@ -43,6 +43,9 @@ namespace AdfToArm.Tests.DataSet
             var dataset = result.value as AzureSqlTable;
 
             // Assert
+            dataset.Name.ShouldNotBeNullOrWhiteSpace();
+            dataset.Properties.Type.ShouldBe(DataSetType.AzureSqlTable);
+
             var props = dataset.Properties.TypeProperties.ShouldBeAssignableTo<AzureSqlTableTypeProperties>();
             props.TableName.ShouldNotBeNullOrWhiteSpace();
         }

@@ -7,14 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-
-  <ItemGroup>
     <Content Include="samples\datasets\azure_cosmosdb.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="samples\datasets\azure_blob_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -27,7 +22,13 @@
     <Content Include="samples\datasets\azure_datalake_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="samples\datasets\azure_searchindex.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\datasets\azure_sql.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\datasets\azure_sqldw.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\datasets\azure_table.json">
@@ -67,6 +68,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\linkedservices\azure_datalakestore_user_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\linkedservices\azure_search.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\linkedservices\azure_sqldw.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\linkedservices\azure_sql_full.json">

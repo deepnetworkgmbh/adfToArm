@@ -8,9 +8,9 @@ using Shouldly;
 namespace AdfToArm.Tests.DataSet
 {
     [TestClass]
-    public class AzureCosmosDbDatasetTests
+    public class AzureSqlDwTableDatasetTests
     {
-        private const string FullFilePath = @"./samples/datasets/azure_cosmosdb.json";
+        private const string FullFilePath = @"./samples/datasets/azure_sqldw.json";
 
         [TestMethod]
         public void AdfItemType_ShouldBe_DataSet()
@@ -24,14 +24,14 @@ namespace AdfToArm.Tests.DataSet
         }
 
         [TestMethod]
-        public void DataSetType_ShouldBe_AzureSqlTable()
+        public void DataSetType_ShouldBe_AzureSqlDwTable()
         {
             // Arrange
             // Act
             var result = AdfSerializer.Deserialize(FullFilePath);
 
             // Assert
-            result.value.ShouldBeAssignableTo<AzureCosmosDbCollection>();
+            result.value.ShouldBeAssignableTo<AzureSqlDwTable>();
         }
 
         [TestMethod]
@@ -40,14 +40,14 @@ namespace AdfToArm.Tests.DataSet
             // Arrange
             // Act
             var result = AdfSerializer.Deserialize(FullFilePath);
-            var dataset = result.value as AzureCosmosDbCollection;
+            var dataset = result.value as AzureSqlDwTable;
 
             // Assert
             dataset.Name.ShouldNotBeNullOrWhiteSpace();
-            dataset.Properties.Type.ShouldBe(DataSetType.CosmosDbCollection);
+            dataset.Properties.Type.ShouldBe(DataSetType.AzureSqlDwTable);
 
-            var props = dataset.Properties.TypeProperties.ShouldBeAssignableTo<AzureCosmosDbCollectionTypeProperties>();
-            props.CollectionName.ShouldNotBeNullOrWhiteSpace();
+            var props = dataset.Properties.TypeProperties.ShouldBeAssignableTo<AzureSqlDwTableTypeProperties>();
+            props.TableName.ShouldNotBeNullOrWhiteSpace();
         }
     }
 }
