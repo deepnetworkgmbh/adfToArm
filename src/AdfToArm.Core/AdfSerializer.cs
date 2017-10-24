@@ -117,7 +117,7 @@ namespace AdfToArm.Core
                         dataset = jo.ToObject<AzureTable>();
                         break;
                     case DataSetType.AzureSearchIndex:
-                        dataset = jo.ToObject<Models.DataSets.AzureSearchIndex>();
+                        dataset = jo.ToObject<AzureSearchIndex>();
                         break;
                 }
 
@@ -170,6 +170,9 @@ namespace AdfToArm.Core
                         break;
                     case LinkedServiceType.AzureSearch:
                         linkedService = jo.ToObject<AzureSearch>();
+                        break;
+                    case LinkedServiceType.AzureML:
+                        linkedService = jo.ToObject<AzureMachineLearning>();
                         break;
                 }
 

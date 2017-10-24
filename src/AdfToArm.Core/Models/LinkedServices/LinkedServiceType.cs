@@ -23,6 +23,8 @@ namespace AdfToArm.Core.Models.LinkedServices
         [EnumMember(Value = "DocumentDb")]
         AzureCosmosDb,
         [EnumMember(Value = "AzureSearch")]
-        AzureSearch
+        AzureSearch,
+        [EnumMember(Value = "AzureML")]
+        AzureML
     }
 }

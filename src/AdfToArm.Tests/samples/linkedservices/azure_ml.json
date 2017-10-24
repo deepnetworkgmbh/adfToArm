@@ -1,0 +1,10 @@
+﻿{
+  "name": "AzureMLLinkedService",
+  "properties": {
+    "type": "AzureML",
+    "typeProperties": {
+      "mlEndpoint": "https://[batch scoring endpoint]/jobs",
+      "apiKey": "<apikey>"
+    }
+  }
+}
