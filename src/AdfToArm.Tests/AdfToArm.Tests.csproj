@@ -100,6 +100,12 @@
     <Content Include="samples\linkedservices\hdinsight_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="samples\linkedservices\hdinsight_ondemand_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\linkedservices\hdinsight_ondemand_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\pipelines\activity_datalakeanalytics_path_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

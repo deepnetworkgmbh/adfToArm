@@ -14,6 +14,8 @@ namespace AdfToArm.Core.Models.LinkedServices
         AzureStorageSas,
         [EnumMember(Value = "HDInsight")]
         HDInsight,
+        [EnumMember(Value = "HDInsightOnDemand")]
+        HDInsightOnDemand,
         [EnumMember(Value = "AzureDataLakeAnalytics")]
         AzureDataLakeAnalytics,
         [EnumMember(Value = "AzureDataLakeStore")]

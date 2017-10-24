@@ -165,6 +165,9 @@ namespace AdfToArm.Core
                     case LinkedServiceType.HDInsight:
                         linkedService = jo.ToObject<HDInsight>();
                         break;
+                    case LinkedServiceType.HDInsightOnDemand:
+                        linkedService = jo.ToObject<HDInsightOnDemand>();
+                        break;
                     case LinkedServiceType.AzureCosmosDb:
                         linkedService = jo.ToObject<AzureCosmosDb>();
                         break;

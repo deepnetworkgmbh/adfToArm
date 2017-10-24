@@ -45,8 +45,8 @@ Supported Azure Data Factory types
   - [x] :white_check_mark:[Azure Data Lake Analytics](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-data-lake-analytics-linked-service)
   - [x] :white_check_mark:[HDInsight](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-linked-service)
   - [x] :white_check_mark:[Azure Batch](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-batch-linked-service)
-  - [ ] [On-Demand HdInsight](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)
-  - [ ] [Azure Machine Learning](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-machine-learning-linked-service)
+  - [x] :white_check_mark:[On-Demand HdInsight](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)
+  - [x] :white_check_mark:[Azure Machine Learning](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-machine-learning-linked-service)
 
 ## Transform Data
   * [x] :white_check_mark:[Stored Procedure](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-stored-proc-activity) 
