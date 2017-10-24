@@ -133,6 +133,12 @@
     <Content Include="samples\pipelines\copy\blobSource_dataLakeSink_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="samples\pipelines\copy\blobSource_sqldwSink_full.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\blobSource_sqldwSink_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\pipelines\copy\cosmosSource_tableSink_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -146,6 +152,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\pipelines\copy\general.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\sqldwprocSource_searchIndexSink_min.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\copy\sqldwquerySource_searchIndexSink_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="samples\pipelines\copy\sqlprocsource_blobSink_full.json">

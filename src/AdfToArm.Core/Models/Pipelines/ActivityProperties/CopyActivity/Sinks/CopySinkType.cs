@@ -13,6 +13,10 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties.CopyActivity.Sinks
         [EnumMember(Value = "AzureTableSink")]
         AzureTableSink,
         [EnumMember(Value = "DocumentDbCollectionSink")]
-        CosmosDbCollectionSink
+        CosmosDbCollectionSink,
+        [EnumMember(Value = "AzureSearchIndexSink")]
+        AzureSearchIndexSink,
+        [EnumMember(Value = "SqlDWSink")]
+        SqlDWSink
     }
 }

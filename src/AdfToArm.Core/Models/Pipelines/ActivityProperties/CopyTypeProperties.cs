@@ -63,5 +63,11 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties
         /// </summary>
         [JsonProperty("redirectIncompatibleRowSettings", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public RedirectIncompatibleRowSettings RedirectIncompatibleRowSettings { get; set; }
+
+        /// <summary>
+        /// Required for copyind data to Azure Search Index
+        /// </summary>
+        [JsonProperty("executionLocation", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public string ExecutionLocation { get; set; }
     }
 }

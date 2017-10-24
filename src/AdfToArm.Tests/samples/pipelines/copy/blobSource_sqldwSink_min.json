@@ -1,0 +1,29 @@
+{  
+  "name":"SamplePipeline",
+  "properties":{  
+    "activities":[  
+      {
+        "name": "AzureBlobtoSQLDW",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureBlobInput"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureSqlDWOutput"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "SqlDWSink"
+          }
+        }
+      }
+    ]
+  }
+}

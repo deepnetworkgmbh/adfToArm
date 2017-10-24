@@ -8,8 +8,8 @@ Supported Azure Data Factory types
   - [x] :white_check_mark:[Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-azure-datalake-connector)
   - [x] :white_check_mark:[SQL Database](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-azure-sql-connector)
   - [x] :white_check_mark:[Cosmos Db](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-azure-documentdb-connector)
-  - [ ] [SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-azure-sql-data-warehouse-connector)
-  - [ ] [Search Index](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-azure-search-connector)
+  - [x] :white_check_mark:[SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-azure-sql-data-warehouse-connector)
+  - [x] :white_check_mark:[Search Index](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-azure-search-connector)
   - [x] :white_check_mark:[Azure table](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-azure-table-connector)
 
 ### Databases

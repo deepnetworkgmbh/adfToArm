@@ -34,6 +34,8 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties.CopyActivity
                         return token.ToObject<CopySourceAzureTable>();
                     case CopySourceType.CosmosDbCollectionSource:
                         return token.ToObject<CopySourceAzureCosmosCollection>();
+                    case CopySourceType.SqlDWSource:
+                        return token.ToObject<CopySourceAzureSqlDw>();
                 }
             }
             catch (JsonSerializationException ex)

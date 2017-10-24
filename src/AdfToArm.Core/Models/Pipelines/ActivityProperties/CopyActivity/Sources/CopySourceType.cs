@@ -13,6 +13,8 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties.CopyActivity.Sources
         [EnumMember(Value = "AzureTableSource")]
         AzureTableSource,
         [EnumMember(Value = "DocumentDbCollectionSource")]
-        CosmosDbCollectionSource
+        CosmosDbCollectionSource,
+        [EnumMember(Value = "SqlDWSource")]
+        SqlDWSource
     }
 }
