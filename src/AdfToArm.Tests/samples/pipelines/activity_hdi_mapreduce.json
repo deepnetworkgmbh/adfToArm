@@ -1,0 +1,26 @@
+{
+  "name": "MRSamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "MRActivity",
+        "type": "HDInsightMapReduce",
+        "typeProperties": {
+          "className": "wordcount",
+          "jarFilePath": "<HDInsight cluster name>/example/jars/hadoop-examples.jar",
+          "jarLinkedService": "StorageLinkedService",
+          "arguments": [
+            "/example/data/gutenberg/davinci.txt",
+            "/example/data/WordCountOutput1"
+          ]
+        },
+        "outputs": [
+          {
+            "name": "MROutput"
+          }
+        ],
+        "linkedServiceName": "HDInsightLinkedService"
+      }
+    ]
+  }
+}

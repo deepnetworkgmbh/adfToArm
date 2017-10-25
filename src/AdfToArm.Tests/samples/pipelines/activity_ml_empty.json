@@ -1,0 +1,21 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "retraining",
+        "type": "AzureMLBatchExecution",
+        "outputs": [
+          {
+            "name": "placeholderOutputDataset"
+          }
+        ],
+        "typeProperties": {
+        },
+        "linkedServiceName": "mlEndpoint"
+      }
+    ]
+  }
+}
+
+

@@ -10,9 +10,19 @@ namespace AdfToArm.Core.Models.Pipelines
         SqlServerStoredProcedure,
         [EnumMember(Value = "HDInsightSpark")]
         HDInsightSpark,
+        [EnumMember(Value = "HDInsightHive")]
+        HDInsightHive,
+        [EnumMember(Value = "HDInsightPig")]
+        HDInsightPig,
+        [EnumMember(Value = "HDInsightMapReduce")]
+        HDInsightMapReduce,
+        [EnumMember(Value = "HDInsightStreaming")]
+        HDInsightStreaming,
         [EnumMember(Value = "DataLakeAnalyticsU-SQL")]
         DataLakeAnalyticsUSQL,
         [EnumMember(Value = "DotNetActivity")]
-        DotNetActivity
+        DotNetActivity,
+        [EnumMember(Value = "AzureMLBatchExecution")]
+        AzureMLBatchExecution
     }
 }

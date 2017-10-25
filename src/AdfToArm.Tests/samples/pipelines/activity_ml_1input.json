@@ -1,0 +1,30 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "MLActivity",
+        "type": "AzureMLBatchExecution",
+        "inputs": [
+          {
+            "name": "DecisionTreeInputBlob"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "DecisionTreeResultBlob"
+          }
+        ],
+        "linkedServiceName": "MyAzureMLLinkedService",
+        "typeProperties": {
+          "webServiceInput": "DecisionTreeInputBlob",
+          "webServiceOutputs": {
+            "output1": "DecisionTreeResultBlob"
+          }
+        }
+      }
+    ]
+  }
+}
+
+

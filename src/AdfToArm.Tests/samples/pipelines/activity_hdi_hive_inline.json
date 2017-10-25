@@ -1,0 +1,25 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "HDinsightHiveActivity1",
+        "type": "HDInsightHive",
+        "outputs": 
+        [
+          {
+            "name": "hdisampleout"
+          }
+        ],
+        "typeProperties": {
+          "script": "Hive script",
+          "defines": {
+            "Input": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/samplein/yearno={0:yyyy}/monthno={0:MM}/dayno={0:dd}/', SliceStart)",
+            "Output": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/sampleout/yearno={0:yyyy}/monthno={0:MM}/dayno={0:dd}/', SliceStart)"
+          },
+        },
+        "linkedServiceName": "HDInsightLinkedService"
+      }
+    ]
+  }
+}

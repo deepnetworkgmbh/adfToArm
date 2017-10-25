@@ -39,8 +39,23 @@ namespace AdfToArm.Core.Models.Pipelines
                         case ActivityType.HDInsightSpark:
                             result.Add(token.ToObject<ActivityHDInsightSpark>());
                             break;
+                        case ActivityType.HDInsightHive:
+                            result.Add(token.ToObject<ActivityHDInsightHive>());
+                            break;
+                        case ActivityType.HDInsightPig:
+                            result.Add(token.ToObject<ActivityHDInsightPig>());
+                            break;
+                        case ActivityType.HDInsightMapReduce:
+                            result.Add(token.ToObject<ActivityHDInsightMapReduce>());
+                            break;
+                        case ActivityType.HDInsightStreaming:
+                            result.Add(token.ToObject<ActivityHDInsightStreaming>());
+                            break;
                         case ActivityType.SqlServerStoredProcedure:
                             result.Add(token.ToObject<ActivitySqlServerStoredProcedure>());
+                            break;
+                        case ActivityType.AzureMLBatchExecution:
+                            result.Add(token.ToObject<ActivityMlBatchExecutor>());
                             break;
                     }
                 }

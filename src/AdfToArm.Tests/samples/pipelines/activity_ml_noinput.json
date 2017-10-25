@@ -1,0 +1,24 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "scoring service",
+        "type": "AzureMLBatchExecution",
+        "outputs": [
+          {
+            "name": "myBlob"
+          }
+        ],
+        "typeProperties": {
+          "webServiceOutputs": {
+            "output1": "myBlob"
+          }              
+         },
+        "linkedServiceName": "mlEndpoint"
+      }
+    ]
+  }
+}
+
+

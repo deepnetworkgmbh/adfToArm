@@ -1,0 +1,30 @@
+{
+  "name": "HadoopStreamingPipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "HDInsightStreamingActivity",
+        "type": "HDInsightStreaming",
+        "typeProperties": {
+          "mapper": "cat.exe",
+          "reducer": "wc.exe",
+          "input": "wasb://<nameofthecluster>@spestore.blob.core.windows.net/example/data/gutenberg/davinci.txt",
+          "output": "wasb://<nameofthecluster>@spestore.blob.core.windows.net/example/data/StreamingOutput/wc.txt",
+          "filePaths": [
+              "<nameofthecluster>/example/apps/wc.exe",
+              "<nameofthecluster>/example/apps/cat.exe"
+          ],
+          "fileLinkedService": "AzureStorageLinkedService",
+          "getDebugInfo": "Failure",
+          "arguments": [ "arg1", "arg2"]
+        },
+        "outputs": [
+          {
+            "name": "MROutput"
+          }
+        ],
+        "linkedServiceName": "HDInsightLinkedService"
+      }
+    ]
+  }
+}
