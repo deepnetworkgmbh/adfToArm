@@ -21,6 +21,8 @@ namespace AdfToArm.Core.Models.Pipelines
         [EnumMember(Value = "DataLakeAnalyticsU-SQL")]
         DataLakeAnalyticsUSQL,
         [EnumMember(Value = "DotNetActivity")]
-        DotNetActivity
+        DotNetActivity,
+        [EnumMember(Value = "AzureMLBatchExecution")]
+        AzureMLBatchExecution
     }
 }

@@ -54,6 +54,9 @@ namespace AdfToArm.Core.Models.Pipelines
                         case ActivityType.SqlServerStoredProcedure:
                             result.Add(token.ToObject<ActivitySqlServerStoredProcedure>());
                             break;
+                        case ActivityType.AzureMLBatchExecution:
+                            result.Add(token.ToObject<ActivityMlBatchExecutor>());
+                            break;
                     }
                 }
                 catch (JsonSerializationException ex)

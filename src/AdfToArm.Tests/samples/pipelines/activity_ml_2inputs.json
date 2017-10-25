@@ -1,0 +1,42 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "MLActivity",
+        "type": "AzureMLBatchExecution",
+        "inputs": [
+          {
+            "name": "inputDataset1"
+          }, 
+          {
+            "name": "inputDataset2"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "outputDataset"
+          }
+        ],
+        "linkedServiceName": "MyAzureMLLinkedService",
+        "typeProperties": {
+          "webServiceInputs": {
+            "input1": "inputDataset1",
+            "input2": "inputDataset2"
+          },
+          "webServiceOutputs": {
+            "output1": "outputDataset"
+          },
+          "globalParameters": {
+            "Database server name": "<myserver>.database.windows.net",
+            "Database name": "<database>",
+            "Server user account name": "<user name>",
+            "Server user account password": "<password>"
+          }
+        }
+      }
+    ]
+  }
+}
+
+
