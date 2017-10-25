@@ -14,6 +14,8 @@ namespace AdfToArm.Core.Models.Pipelines
         HDInsightHive,
         [EnumMember(Value = "HDInsightPig")]
         HDInsightPig,
+        [EnumMember(Value = "HDInsightMapReduce")]
+        HDInsightMapReduce,
         [EnumMember(Value = "DataLakeAnalyticsU-SQL")]
         DataLakeAnalyticsUSQL,
         [EnumMember(Value = "DotNetActivity")]

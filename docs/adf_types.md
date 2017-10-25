@@ -55,6 +55,6 @@ Supported Azure Data Factory types
   * [x] :white_check_mark:[Spark](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-spark)
   * [x] :white_check_mark:[Hive](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-hive-activity)
   * [x] :white_check_mark:[Pig](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-pig-activity) 
-  * [ ] [MapReduce](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-map-reduce)
+  * [x] :white_check_mark:[MapReduce](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-map-reduce)
   * [ ] [Hadoop streaming](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-hadoop-streaming-activity)
   * [ ] Machine Learning activities: [Batch Execution](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-azure-ml-batch-execution-activity) and [Update Resource (Azure ML)](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-azure-ml-update-resource-activity)

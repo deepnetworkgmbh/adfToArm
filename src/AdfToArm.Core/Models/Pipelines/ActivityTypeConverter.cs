@@ -45,6 +45,9 @@ namespace AdfToArm.Core.Models.Pipelines
                         case ActivityType.HDInsightPig:
                             result.Add(token.ToObject<ActivityHDInsightPig>());
                             break;
+                        case ActivityType.HDInsightMapReduce:
+                            result.Add(token.ToObject<ActivityHDInsightMapReduce>());
+                            break;
                         case ActivityType.SqlServerStoredProcedure:
                             result.Add(token.ToObject<ActivitySqlServerStoredProcedure>());
                             break;
