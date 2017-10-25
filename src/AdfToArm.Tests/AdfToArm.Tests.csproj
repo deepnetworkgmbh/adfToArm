@@ -145,6 +145,9 @@
     <Content Include="samples\pipelines\activity_hdi_spark_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="samples\pipelines\activity_hdi_streaming.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\pipelines\activity_sqlsp_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

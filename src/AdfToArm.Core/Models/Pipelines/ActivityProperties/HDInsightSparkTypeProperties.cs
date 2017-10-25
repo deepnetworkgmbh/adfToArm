@@ -65,14 +65,4 @@ namespace AdfToArm.Core.Models.Pipelines.ActivityProperties
         [JsonProperty("sparkJobLinkedService", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string SparkJobLinkedService { get; set; }
     }
-
-    public enum GetDebugInfo
-    {
-        [EnumMember(Value = "None")]
-        None,
-        [EnumMember(Value = "Always")]
-        Always,
-        [EnumMember(Value = "Failure")]
-        Failure
-    }
 }

@@ -21,8 +21,6 @@
         ],
         "linkedServiceName": "HDInsightLinkedService"
       }
-    ],
-    "start": "2014-01-03T00:00:00Z",
-    "end": "2014-01-04T00:00:00Z"
+    ]
   }
 }

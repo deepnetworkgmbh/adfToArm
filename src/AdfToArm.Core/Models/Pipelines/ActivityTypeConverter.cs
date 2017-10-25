@@ -48,6 +48,9 @@ namespace AdfToArm.Core.Models.Pipelines
                         case ActivityType.HDInsightMapReduce:
                             result.Add(token.ToObject<ActivityHDInsightMapReduce>());
                             break;
+                        case ActivityType.HDInsightStreaming:
+                            result.Add(token.ToObject<ActivityHDInsightStreaming>());
+                            break;
                         case ActivityType.SqlServerStoredProcedure:
                             result.Add(token.ToObject<ActivitySqlServerStoredProcedure>());
                             break;
