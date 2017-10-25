@@ -24,6 +24,7 @@ namespace AdfToArm.Core
                     .GetCustomAttributes(typeof(EnumMemberAttribute), true))
                     .Single();
 
+                // TODO: should it be case sensitive?
                 if (enumMemberAttribute.Value == str)
                     return (T)Enum.Parse(enumType, name);
             }

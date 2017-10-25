@@ -124,6 +124,12 @@
     <Content Include="samples\pipelines\activity_dotnet_min.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="samples\pipelines\activity_hdi_hive_inline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\pipelines\activity_hdi_hive_path.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\pipelines\activity_hdi_spark_full.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

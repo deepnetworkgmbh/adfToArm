@@ -53,7 +53,7 @@ Supported Azure Data Factory types
   * [x] :white_check_mark:[Data Lake Analytics U-SQL](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-usql-activity)
   * [x] :white_check_mark:[Custom DotNet](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-use-custom-activities) activities
   * [x] :white_check_mark:[Spark](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-spark)
-  * [ ] [Hive](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-hive-activity)
+  * [x] :white_check_mark:[Hive](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-hive-activity)
   * [ ] [Pig](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-pig-activity) 
   * [ ] [MapReduce](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-map-reduce)
   * [ ] [Hadoop streaming](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-hadoop-streaming-activity)

@@ -39,6 +39,9 @@ namespace AdfToArm.Core.Models.Pipelines
                         case ActivityType.HDInsightSpark:
                             result.Add(token.ToObject<ActivityHDInsightSpark>());
                             break;
+                        case ActivityType.HDInsightHive:
+                            result.Add(token.ToObject<ActivityHDInsightHive>());
+                            break;
                         case ActivityType.SqlServerStoredProcedure:
                             result.Add(token.ToObject<ActivitySqlServerStoredProcedure>());
                             break;

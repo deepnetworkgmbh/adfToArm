@@ -10,6 +10,8 @@ namespace AdfToArm.Core.Models.Pipelines
         SqlServerStoredProcedure,
         [EnumMember(Value = "HDInsightSpark")]
         HDInsightSpark,
+        [EnumMember(Value = "HDInsightHive")]
+        HDInsightHive,
         [EnumMember(Value = "DataLakeAnalyticsU-SQL")]
         DataLakeAnalyticsUSQL,
         [EnumMember(Value = "DotNetActivity")]
