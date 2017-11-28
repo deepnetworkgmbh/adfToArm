@@ -7,6 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="samples\arm\params\all_supported_parameter_types.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\proj_min\copy_activity.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\proj_min\ds_blob.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\proj_min\ds_datalake.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\proj_min\ls_blob.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\proj_min\ls_datalake.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\datasets\azure_cosmosdb.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

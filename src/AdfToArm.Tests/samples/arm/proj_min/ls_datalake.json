@@ -1,0 +1,12 @@
+﻿{
+  "name": "AzureDataLakeStoreLinkedService1",
+  "properties": {
+    "type": "AzureDataLakeStore",
+    "typeProperties": {
+      "dataLakeStoreUri": "https://[accountname].azuredatalakestore.net/webhdfs/v1",
+      "servicePrincipalId": "<service principal id>",
+      "servicePrincipalKey": "<service principal key>",
+      "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>"
+    }
+  }
+}
