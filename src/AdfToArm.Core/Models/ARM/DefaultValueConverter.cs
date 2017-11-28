@@ -25,6 +25,11 @@ namespace AdfToArm.Core.Models.ARM
                 var pairConverter = new PairConverter();
                 pairConverter.WriteJson(writer, value, serializer);
             }
+            else if(value.GetType().IsArray)
+            {
+                var ja = new JArray(value);
+                ja.WriteTo(writer);
+            }
             else if(value.GetType().IsSimple())
             {
                 var jv = new JValue(value);

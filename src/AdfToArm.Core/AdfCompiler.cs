@@ -144,7 +144,7 @@ namespace AdfToArm.Core
                 var directory = new DirectoryInfo(_projectPath);
                 var name = directory.Name.Replace('.', '-');
                 Logs.Logger.Instance.Info($"{_projectPath} is a directory. Use ADF name {name}");
-                return _projectPath;
+                return name;
             }
 
             if (_projectPath.EndsWith(".dfproj"))
