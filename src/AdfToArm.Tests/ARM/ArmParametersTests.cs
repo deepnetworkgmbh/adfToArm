@@ -1,4 +1,5 @@
 ﻿using AdfToArm.Core;
+using AdfToArm.Core.Compiler;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using Shouldly;
@@ -26,11 +27,12 @@ namespace AdfToArm.Tests.ARM
         {
             // Arrange
             // Act
-            AdfCompiler
-                .New(FolderPath)
-                .ParseAdfTemplates()
-                .CreateArmTemplate()
-                .SaveArmTo(outputFileName);
+            Compiler
+                .New()
+                .From(FolderPath)
+                .To(".")
+                .Name("testparams.json")
+                .Create();
 
             var jsonArm = File.ReadAllText(outputFileName);
             var jo = JObject.Parse(jsonArm);
@@ -48,11 +50,12 @@ namespace AdfToArm.Tests.ARM
         {
             // Arrange
             // Act
-            AdfCompiler
-                .New(FolderPath)
-                .ParseAdfTemplates()
-                .CreateArmTemplate()
-                .SaveArmTo(outputFileName);
+            Compiler
+                .New()
+                .From(FolderPath)
+                .To(".")
+                .Name("testparams.json")
+                .Create();
 
             var jsonArm = File.ReadAllText(outputFileName);
             var jo = JObject.Parse(jsonArm);
@@ -70,11 +73,12 @@ namespace AdfToArm.Tests.ARM
         {
             // Arrange
             // Act
-            AdfCompiler
-                .New(FolderPath)
-                .ParseAdfTemplates()
-                .CreateArmTemplate()
-                .SaveArmTo(outputFileName);
+            Compiler
+                .New()
+                .From(FolderPath)
+                .To(".")
+                .Name("testparams.json")
+                .Create();
 
             var jsonArm = File.ReadAllText(outputFileName);
             var jo = JObject.Parse(jsonArm);
@@ -94,11 +98,12 @@ namespace AdfToArm.Tests.ARM
         {
             // Arrange
             // Act
-            AdfCompiler
-                .New(FolderPath)
-                .ParseAdfTemplates()
-                .CreateArmTemplate()
-                .SaveArmTo(outputFileName);
+            Compiler
+                .New()
+                .From(FolderPath)
+                .To(".")
+                .Name("testparams.json")
+                .Create();
 
             var jsonArm = File.ReadAllText(outputFileName);
             var jo = JObject.Parse(jsonArm);
@@ -118,11 +123,12 @@ namespace AdfToArm.Tests.ARM
         {
             // Arrange
             // Act
-            AdfCompiler
-                .New(FolderPath)
-                .ParseAdfTemplates()
-                .CreateArmTemplate()
-                .SaveArmTo(outputFileName);
+            Compiler
+                .New()
+                .From(FolderPath)
+                .To(".")
+                .Name("testparams.json")
+                .Create();
 
             var jsonArm = File.ReadAllText(outputFileName);
             var joArm = JObject.Parse(jsonArm)["parameters"];

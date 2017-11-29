@@ -1,4 +1,4 @@
-﻿using AdfToArm.Core;
+﻿using AdfToArm.Core.Compiler;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using Shouldly;
@@ -25,11 +25,12 @@ namespace AdfToArm.Tests.ARM
         {
             // Arrange
             // Act
-            AdfCompiler
-                .New(@"./samples/arm/one_pipeline_proj")
-                .ParseAdfTemplates()
-                .CreateArmTemplate()
-                .SaveArmTo(outputFileName);
+            Compiler
+                .New()
+                .From(@"./samples/arm/one_pipeline_proj")
+                .To(".")
+                .Name("testparams.json")
+                .Create();
 
             var jsonArm = File.ReadAllText(outputFileName);
             var jo = JObject.Parse(jsonArm);
@@ -47,11 +48,12 @@ namespace AdfToArm.Tests.ARM
         {
             // Arrange
             // Act
-            AdfCompiler
-                .New(@"./samples/arm/three_pipelines_proj")
-                .ParseAdfTemplates()
-                .CreateArmTemplate()
-                .SaveArmTo(outputFileName);
+            Compiler
+                .New()
+                .From(@"./samples/arm/three_pipelines_proj")
+                .To(".")
+                .Name("testparams.json")
+                .Create();
 
             var jsonArm = File.ReadAllText(outputFileName);
             var jo = JObject.Parse(jsonArm);
@@ -69,11 +71,12 @@ namespace AdfToArm.Tests.ARM
         {
             // Arrange
             // Act
-            AdfCompiler
-                .New(@"./samples/arm/three_activities_pipeline_proj")
-                .ParseAdfTemplates()
-                .CreateArmTemplate()
-                .SaveArmTo(outputFileName);
+            Compiler
+                .New()
+                .From(@"./samples/arm/three_activities_pipeline_proj")
+                .To(".")
+                .Name("testparams.json")
+                .Create();
 
             var jsonArm = File.ReadAllText(outputFileName);
             var jo = JObject.Parse(jsonArm);
