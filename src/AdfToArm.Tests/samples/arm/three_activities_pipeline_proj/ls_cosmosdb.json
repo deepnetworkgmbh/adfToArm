@@ -1,0 +1,9 @@
+﻿{
+  "name": "CosmosDbLinkedService",
+  "properties": {
+    "type": "DocumentDb",
+    "typeProperties": {
+      "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
+    }
+  }
+}

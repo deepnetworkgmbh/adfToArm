@@ -112,5 +112,30 @@ namespace AdfToArm.Tests.ARM
             objectValue.ShouldBeAssignableTo<JObject>();
             objectValue["templeton.mapper.memory.mb"].ShouldBe("5000");
         }
+
+        [TestMethod]
+        public void Compiler_ShouldCreateParametersFileWithTheSameAmountOfParameters()
+        {
+            // Arrange
+            // Act
+            AdfCompiler
+                .New(FolderPath)
+                .ParseAdfTemplates()
+                .CreateArmTemplate()
+                .SaveArmTo(outputFileName);
+
+            var jsonArm = File.ReadAllText(outputFileName);
+            var joArm = JObject.Parse(jsonArm)["parameters"];
+
+            var jsonParams = File.ReadAllText(outputParamsName);
+            var joParams = JObject.Parse(jsonParams)["parameters"].Cast<JProperty>();
+
+            // Assert
+            foreach (JProperty param in joArm)
+            {
+                var actualParam = joParams.FirstOrDefault(i => i.Name == param.Name);
+                actualParam.ShouldNotBeNull();
+            }
+        }
     }
 }

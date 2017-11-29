@@ -1,0 +1,10 @@
+﻿{
+  "name": "AzureSearchLinkedService",
+  "properties": {
+    "type": "AzureSearch",
+    "typeProperties": {
+      "url": "https://<service>.search.windows.net",
+      "key": "<AdminKey>"
+    }
+  }
+}

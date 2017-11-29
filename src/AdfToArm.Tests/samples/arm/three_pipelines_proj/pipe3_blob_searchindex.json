@@ -1,0 +1,32 @@
+{  
+  "name":"SamplePipeline3",
+  "properties":{  
+    "activities":[  
+      {
+        "name": "AzureBlob2toSearchIndex2",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureBlob12"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureSearchIndex2"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "AzureSearchIndexSink",
+            "WriteBehavior": "Upload",
+            "WriteBatchSize": 500
+          },
+          "executionLocation": "West US"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "AzureTable1",
+  "properties": {
+    "type": "AzureTable",
+    "linkedServiceName": "AzureStorageLinkedService1",
+    "typeProperties": {
+      "tableName": "Table"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    }
+  }
+}

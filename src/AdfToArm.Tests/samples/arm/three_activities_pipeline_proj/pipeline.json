@@ -1,0 +1,99 @@
+{
+  "name": "SamplePipeline",
+  "properties": {
+    "description": "The simplest pipeline",
+    "activities": [
+      {
+        "name": "SqlStoredProcedureActivity1",
+        "description": "Copy from SQL to cosmos",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureSqlTable1"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "PersonCosmosDbTable"
+          }
+        ],
+        "linkedServiceName": "AzureSqlTableLinkedService1",
+        "typeProperties": {
+          "source": {
+            "type": "SqlSource",
+            "sqlReaderQuery": "select * from [dbo].[Table1]"
+          },
+          "sink": {
+            "type": "DocumentDbCollectionSink"
+          }
+        },
+        "policy": {
+          "concurrency": 2,
+          "executionPriorityOrder": "NewestFirst",
+          "retry": 3,
+          "timeout": "00:03:00",
+          "delay": "00:01:00",
+          "longRetry": 3,
+          "longRetryInterval": "00:10:00"      
+        },
+        "scheduler": {
+          "frequency": "Hour",
+          "interval": 1,
+          "style": "EndOfInterval",
+          "anchorDateTime": "01/01/0001",
+          "offset": "00:00:00.000"
+        }
+      },
+      {
+        "name": "CopyFromCosmosToStorage",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "PersonCosmosDbTable"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureTable1"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "DocumentDbCollectionSource"
+          },
+          "sink": {
+            "type": "AzureTableSink"
+          }
+        }
+      },
+      {
+        "name": "CopyFromTableToDataLake",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureTable1"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureDataLakeStore1"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "AzureTableSource"
+          },
+          "sink": {
+            "type": "AzureDataLakeStoreSink"
+          }
+        }
+      }
+    ],
+    "start": "2017-10-23T00:00:00Z",
+    "end": "2099-12-30T00:00:00Z",
+    "isPaused": false,
+    "pipelineMode": "OneTime",
+    "expirationTime": "3.00:00:00.000"
+  },
+  "$schema": "http://datafactories.schema.management.azure.com/internalschemas/2015-09-01/Microsoft.DataFactory.Pipeline.json"
+}

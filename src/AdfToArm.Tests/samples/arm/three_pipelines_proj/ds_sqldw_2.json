@@ -1,0 +1,14 @@
+{
+  "name": "AzureSqlDWTable2",
+  "properties": {
+    "type": "AzureSqlDWTable",
+    "linkedServiceName": "AzureSqlDWLinkedService",
+    "typeProperties": {
+      "tableName": "MyTable2"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    }
+  }
+}
