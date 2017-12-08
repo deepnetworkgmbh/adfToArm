@@ -1,0 +1,18 @@
+﻿{
+  "name": "HDInsightOnDemandLinkedService",
+  "properties": {
+    "type": "HDInsightOnDemand",
+    "typeProperties": {
+      "clusterSize": 1,
+      "timeToLive": "00:05:00",
+      "linkedServiceName": "AzureStorageLinkedService",
+      "additionalLinkedServiceNames": [
+        "otherLinkedServiceName1",
+        "otherLinkedServiceName2"
+      ],
+      "coreConfiguration": {
+        "templeton.mapper.memory.mb": "5000"
+      }
+    }
+  }
+}

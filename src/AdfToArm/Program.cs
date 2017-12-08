@@ -1,4 +1,4 @@
-﻿using AdfToArm.Core;
+﻿using AdfToArm.Core.Compiler;
 using AdfToArm.Core.Logs;
 using CommandLine;
 using System;
@@ -35,11 +35,12 @@ namespace AdfToArm
                 if (!Directory.Exists(obj.OutputFolder))
                     Directory.CreateDirectory(obj.OutputFolder);
 
-                AdfCompiler
-                    .New(obj.PathToProject)
-                    .ParseAdfTemplates()
-                    .CreateArmTemplate()
-                    .SaveArmTo(Path.Combine(obj.OutputFolder, $"{name}.json"));
+                Compiler
+                    .New()
+                    .From(obj.PathToProject)
+                    .To(obj.OutputFolder)
+                    .Name(name)
+                    .Create();
             }
             catch(Exception ex)
             {

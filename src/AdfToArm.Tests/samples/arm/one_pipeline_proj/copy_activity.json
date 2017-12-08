@@ -1,0 +1,29 @@
+{
+  "name": "CopyFromBlobToDataLakePipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyFromBlobToDataLake",
+        "type": "Copy",
+        "inputs": [
+          {
+            "name": "AzureBlob1"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureDataLakeStore1"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "AzureDataLakeStoreSink"
+          }
+        }
+      }
+    ]
+  }
+}

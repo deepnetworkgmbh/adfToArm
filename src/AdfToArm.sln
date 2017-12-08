@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdfToArm", "AdfToArm\AdfToArm.csproj", "{70A66F8B-FA1B-4699-BA8E-E4CBB3A6ED66}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdfToArm.Core", "AdfToArm.Core\AdfToArm.Core.csproj", "{FCFF46A0-18FE-4010-9994-1A1C68A6A2EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdfToArm.Tests", "AdfToArm.Tests\AdfToArm.Tests.csproj", "{62C0B32F-5F6D-4ADB-9704-7DA0C2674ABC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdfToArm.Tests", "AdfToArm.Tests\AdfToArm.Tests.csproj", "{62C0B32F-5F6D-4ADB-9704-7DA0C2674ABC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{37EDED8D-E991-41F9-83AB-338308F7F611}"
+	ProjectSection(SolutionItems) = preProject
+		adf_cicd.nuspec = adf_cicd.nuspec
+		readme.txt = readme.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

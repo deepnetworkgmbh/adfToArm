@@ -7,6 +7,87 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="samples\arm\params\all_supported_parameter_types.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\one_pipeline_proj\copy_activity.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\one_pipeline_proj\ds_blob.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\one_pipeline_proj\ds_datalake.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\one_pipeline_proj\ls_blob.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\one_pipeline_proj\ls_datalake.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_activities_pipeline_proj\ds_cosmosdb.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_activities_pipeline_proj\ds_datalake.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_activities_pipeline_proj\ds_sql.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_activities_pipeline_proj\ds_table.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_activities_pipeline_proj\ls_cosmosdb.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_activities_pipeline_proj\ls_datalakestore.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_activities_pipeline_proj\ls_sql.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_activities_pipeline_proj\ls_storage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_activities_pipeline_proj\pipeline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_pipelines_proj\ds_blob_1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_pipelines_proj\ds_blob_2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_pipelines_proj\ds_searchindex_1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_pipelines_proj\ds_searchindex_2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_pipelines_proj\ds_sqldw_1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_pipelines_proj\ds_sqldw_2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_pipelines_proj\ls_search.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_pipelines_proj\ls_sqldw.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_pipelines_proj\ls_storage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_pipelines_proj\pipe1_blob_dw.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_pipelines_proj\pipe2_dw_searchindex.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\arm\three_pipelines_proj\pipe3_blob_searchindex.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\datasets\azure_cosmosdb.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

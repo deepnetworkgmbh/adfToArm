@@ -1,0 +1,14 @@
+{
+  "name": "AzureBlob1",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "AzureStorageLinkedService1",
+    "typeProperties": {
+      "folderPath": "blob\folder"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    }
+  }
+}
