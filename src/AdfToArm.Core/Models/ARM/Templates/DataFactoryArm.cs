@@ -19,6 +19,11 @@ namespace AdfToArm.Core.Models.ARM.Tempaltes
             Name = name;
         }
 
+        [ArmParameter(Name = "Location", RemoveBrackets = false)]
+        [JsonProperty("location", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public string Location { get; set; }
+
+
         public void AddResource(ArmResource resource)
         {
             Resources.Add(resource);
