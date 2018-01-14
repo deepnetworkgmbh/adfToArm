@@ -6,7 +6,7 @@
 Version 
 -------
 
-0.1.7 08/12/2017
+0.1.8 15/01/2018
 
 
 Contact Information
