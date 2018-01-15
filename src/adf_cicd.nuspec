@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>AzureDataFactory.CICD</id>
-        <version>0.1.7</version>
+        <version>0.1.8</version>
         <description>Azure Data Factory to ARM compiler</description>
         <authors>Deepnetwork.com</authors>
         <licenseUrl>https://github.com/deepnetworkgmbh/adfToArm/blob/master/LICENSE</licenseUrl>
